@@ -19,9 +19,6 @@ module.exports = {
       inset: ['group-focus'],
           colors: {
         //Colores personalizados
-        //black:#0000000,
-<<<<<<< Updated upstream
-=======
         VerdeO: '#3F6D4E',
         VerdeC: '#8BD450',
         MoradoO: '#1D1A2F',
@@ -30,7 +27,6 @@ module.exports = {
       },
       fontFamily: {
         poppins: ['Poppins', 'Arial', 'sans-serif'],
->>>>>>> Stashed changes
       },
     },
   },

@@ -6,7 +6,7 @@ export const AuthContext = createContext();
 const API = import.meta.env.VITE_DECODE_URL;
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState("null");
   const [loggedIn, setLoggedIn] = useState(false); // Nuevo estado para controlar si el usuario está autenticado
 
   const getDecodedData = async () => {
