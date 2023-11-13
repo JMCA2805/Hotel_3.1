@@ -18,7 +18,15 @@ module.exports = {
       colors: {
         //Colores personalizados
         //black:#0000000,
+        VerdeO: '#3F6D4E',
+        VerdeC: '#8BD450',
+        MoradoO: '#1D1A2F',
+        MoradoC: '#965FD4',
+        MoradoG: '734F9A'
       },
+      plugins: [
+        require('flowbite/plugin')
+    ],
     },
   },
   plugins: [],
