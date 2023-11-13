@@ -45,7 +45,7 @@ function Header(props) {
         <div className="flex-shrink-0 font-bold tracking-wider text-white text-xl">
           <img
             className="h-14 inline hover:cursor-pointer mx-px"
-            src="public/logo.png"
+            src="logo.png"
             alt="Logo-Hotel-Águila"
           />
           Hotel Águila

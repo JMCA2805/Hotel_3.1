@@ -19,7 +19,7 @@ export default class Hero extends Component {
             </div>  
             {/* Imagen */}  
             <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
-                <img src="/logo.png" alt="mockup"/>
+                <img src="logo.png" alt="mockup"/>
             </div>                
         </div>
     </section>

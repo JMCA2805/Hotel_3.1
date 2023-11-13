@@ -69,8 +69,9 @@ function Resumen() {
       <div className='w-1/2 pl-16 mr-6'>
         <h1 className='text-4xl font-bold mb-4'>Resumen</h1>
         <p className='text-lg'>
-          Descripción del hotel: Lorem ipsum dolor sit amet,consectetur adipiscing elit. Nulla consectetur enim id elit blandit, a condimentum ex consectetur. Sed at ligula velit. Ut in ex in tellus eleifend scelerisque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce feugiat tempor ipsum, ac commodo arcu auctor quis.
-        </p>
+        El Hotel Águila era un lugar emblemático en Caracas, Venezuela, conocido por su elegancia y servicio impecable. 
+        Fundado hace más de cien años, el hotel era famoso por su belleza y comodidades, así como por su historia como refugio para disidentes políticos durante la dictadura. A pesar de la crisis económica, el hotel seguía siendo un lugar especial para muchos caraqueños, que recordaban con cariño los momentos felices que habían vivido entre sus paredes. 
+        Aunque su futuro era incierto, siempre permanecería en la memoria de quienes lo conocieron en su época dorada.        </p>
       </div>
     </div>
   );
