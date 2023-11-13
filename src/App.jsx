@@ -1,16 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Hotel from "./views/Hotel";
-import NotFound from "./views/NotFound";
+import Hero from "./components/Landing/Hero";
+import Resumen from "./components/Landing/Resumen";
+import AuthProvider from "./context/AuthProvider"
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+    <AuthProvider>
+    <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Hotel />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Resumen/> } />
         </Routes>
       </BrowserRouter>
+    </AuthProvider>
+
     </>
   );
 }
