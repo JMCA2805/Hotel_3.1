@@ -6,6 +6,9 @@ import Header from "./components/Header/Header";
 import DarkModeGlobal from "./context/DarkModeProvider";
 import Services from "./components/Landing/Services";
 import Info from './components/Landing/Info'
+import ReviewsL from './components/Landing/ReviewsL'
+import Login from './components/Login'
+import RegisterForm from "./components/Registro";
 
 function App() {
   return (
@@ -15,7 +18,11 @@ function App() {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<><Hero /><Resumen/><Services/><Info /></>} />
+              <Route path="/" element={<><Hero /><Resumen/><Services/><Info /><ReviewsL /></>} />
+              <Route path="/Login" element={<><Login/></>} />
+              <Route path="/Registro" element={<><RegisterForm/></>} />
+
+
             </Routes>
           </BrowserRouter>
         </DarkModeGlobal>
