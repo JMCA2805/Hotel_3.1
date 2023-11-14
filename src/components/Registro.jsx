@@ -63,7 +63,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-verdearb">
+    <div className="flex justify-center items-center min-h-screen bg-MoradoO">
       <form
         className="bg-white p-8 rounded-lg shadow-lg w-96"
         onSubmit={handleSubmit}
@@ -146,7 +146,7 @@ const RegisterForm = () => {
         </div>
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
         <button
-          className="bg-verdeo text-white py-2 px-4 rounded-md w-full hover:bg-rojo"
+          className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo"
           type="submit"
         >
           Registrarse
