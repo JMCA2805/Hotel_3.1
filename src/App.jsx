@@ -11,6 +11,7 @@ import Login from './components/Login'
 import RegisterForm from "./components/Registro";
 import Footer from './components/Footer'
 import Precios from "./components/Reservas/Precios";
+import Blog from "./components/Blog/Blog";
 
 function App() {
   return (
@@ -24,10 +25,7 @@ function App() {
               <Route path="/Login" element={<><Login/></>} />
               <Route path="/Registro" element={<><RegisterForm/></>} />
               <Route path="/Reserva" element={<><RegisterForm/><Precios/></>} />
-
-              
-
-
+              <Route path="/Blog" element={<Blog/>} />
             </Routes>
             <Footer/>
           </BrowserRouter>
