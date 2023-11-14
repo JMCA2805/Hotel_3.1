@@ -10,6 +10,7 @@ import ReviewsL from './components/Landing/ReviewsL'
 import Login from './components/Login'
 import RegisterForm from "./components/Registro";
 import Footer from './components/Footer'
+import Precios from "./components/Reservas/Precios";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
               <Route path="/" element={<><Hero /><Resumen/><Services/><Info /><ReviewsL /></>} />
               <Route path="/Login" element={<><Login/></>} />
               <Route path="/Registro" element={<><RegisterForm/></>} />
-              <Route path="/Reserva" element={<><RegisterForm/></>} />
+              <Route path="/Reserva" element={<><RegisterForm/><Precios/></>} />
 
               
 
