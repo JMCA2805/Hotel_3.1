@@ -31,6 +31,12 @@ const reviews = [
     description: 'Descripción de la reseña 5',
     color: '#734F9A',
   },
+  {
+    icon: '/ruta/al/icono5.png',
+    title: 'Título de la Reseña 6',
+    description: 'Descripción de la reseña 6',
+    color: '#734F9A',
+  },
 ];
 
 const ReviewCard = ({ icon, title, description, color }) => {
@@ -47,7 +53,7 @@ const ReviewCard = ({ icon, title, description, color }) => {
 
 const ReviewsL = () => {
   return (
-    <div className="container mx-auto py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+    <div className="container mx-auto py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
       {reviews.map((review, index) => (
         <ReviewCard
           key={index}

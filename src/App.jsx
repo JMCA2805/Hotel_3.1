@@ -9,6 +9,7 @@ import Info from './components/Landing/Info'
 import ReviewsL from './components/Landing/ReviewsL'
 import Login from './components/Login'
 import RegisterForm from "./components/Registro";
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -21,10 +22,15 @@ function App() {
               <Route path="/" element={<><Hero /><Resumen/><Services/><Info /><ReviewsL /></>} />
               <Route path="/Login" element={<><Login/></>} />
               <Route path="/Registro" element={<><RegisterForm/></>} />
+              <Route path="/Reserva" element={<><RegisterForm/></>} />
+
+              
 
 
             </Routes>
+            <Footer/>
           </BrowserRouter>
+          
         </DarkModeGlobal>
       </AuthProvider>
     </>

@@ -9,44 +9,43 @@ import {
 
 export default function Services() {
   return (
-    <section className="flex max-w h-full m-auto py-4 md:py-8 lg:py-16 font-poppins bg-MoradoO mx-4 my-4 text-white rounded-2xl '">
-      <div className="py-2 md:py-4 lg:py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-        <div className="max-w-screen-md mb-8 lg:mb-16">
-          <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
-            Servicios del Hotel
-          </h2>
-          <p className="text-gray-500 sm:text-xl dark:text-gray-400">
-            Nuestro objetivo es garantizar que cada huésped disfrute de una
-            estancia inolvidable con todos los servicios que puedan necesitar a
-            su disposición.
+    <section className="flex max-w h-full m-auto py-4 md:py-8 lg:py-16 font-poppins bg-MoradoO mx-4 my-4 text-white rounded-2xl">
+    <div className="py-2 md:py-4 lg:py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+      <div className="max-w-screen-md mb-8 lg:mb-16">
+        <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-white">
+          Servicios del Hotel
+        </h2>
+        <p className="text-gray-500 sm:text-xl dark:text-gray-400">
+          Nuestro objetivo es garantizar que cada huésped disfrute de una
+          estancia inolvidable con todos los servicios que puedan necesitar a
+          su disposición.
+        </p>
+      </div>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+        <div className="flex flex-col items-center">
+          <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+            <FaHotel className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
+          </div>
+          <h3 className="mb-2 text-xl font-bold dark:text-white">
+            Habitaciones de Lujo
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 text-center">
+            Habitaciones elegantes y confortables con servicio de limpieza
+            diario y amenities de alta calidad.
           </p>
         </div>
-        <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-          <div>
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaHotel className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />{" "}
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Habitaciones de Lujo
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              {" "}
-              Habitaciones elegantes y confortables con servicio de limpieza
-              diario y amenities de alta calidad.
-            </p>
+        <div className="flex flex-col items-center">
+          <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+            <FaUtensils className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
           </div>
-          <div>
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaUtensils className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Restaurante gourmet:
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400">
-              Ofreciendo una exquisita selección de platos internacionales y
-              locales, con un ambiente refinado y servicio de primera clase.
-            </p>
-          </div>
+          <h3 className="mb-2 text-xl font-bold dark:text-white">
+            Restaurante gourmet
+          </h3>
+          <p className="text-gray-500 dark:text-gray-400 text-center">
+            Ofreciendo una exquisita selección de platos internacionales y
+            locales, con un ambiente refinado y servicio de primera clase.
+          </p>
+        </div>
           <div>
             <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
               <FaMattressPillow className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
