@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 const API = import.meta.env.VITE_REGISTER_URL;
 
@@ -15,7 +14,6 @@ const RegisterForm = () => {
   const [contraseñasMatch, setContraseñasMatch] = useState(true);
   const [error, setError] = useState("");
   const navigate = useNavigate();
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -47,7 +45,7 @@ const RegisterForm = () => {
         title: "Usuario registrado",
         text: "El usuario se ha registrado exitosamente.",
       }).then(() => {
-        navigate("/")
+        navigate("/");
       });
     } catch (error) {
       setError("Ocurrió un error al registrar el usuario");
@@ -63,9 +61,9 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-MoradoO">
+    <div className="flex justify-center items-center min-h-screen bg-MoradoO dark:bg-black p-4">
       <form
-        className="bg-white p-8 rounded-lg shadow-lg w-96"
+        className="bg-Moradote p-8 rounded-lg shadow-lg w-96 dark:bg-MoradoO dark:border-VerdeC dark:border text-white"
         onSubmit={handleSubmit}
       >
         <h2 className="text-2xl font-semibold mb-6">Registro</h2>
@@ -74,7 +72,7 @@ const RegisterForm = () => {
             Nombre
           </label>
           <input
-            className="w-full p-2 border border-verdeo rounded-md"
+            className="w-full p-2 border rounded-md bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
             type="text"
             id="nombre"
             value={nombre}
@@ -87,7 +85,7 @@ const RegisterForm = () => {
             Apellido
           </label>
           <input
-            className="w-full p-2 border border-verdeo rounded-md"
+            className="w-full p-2 border rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
             type="text"
             id="apellido"
             value={apellido}
@@ -100,7 +98,7 @@ const RegisterForm = () => {
             Correo electrónico
           </label>
           <input
-            className="w-full p-2 border border-verdeo rounded-md"
+            className="w-full p-2 border rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
             type="email"
             id="correo"
             value={correo}
@@ -113,7 +111,7 @@ const RegisterForm = () => {
             Contraseña
           </label>
           <input
-            className="w-full p-2 border border-verdeo rounded-md"
+            className="w-full p-2 border rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
             type="password"
             id="contraseña"
             value={contraseña}
@@ -122,12 +120,15 @@ const RegisterForm = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block font-medium border-verdeo mb-2" htmlFor="confirmContraseña">
+          <label
+            className="block font-medium mb-2 "
+            htmlFor="confirmContraseña"
+          >
             Confirmar Contraseña
           </label>
           <input
-            className={`w-full p-2 border rounded-md ${
-              contraseñasMatch ? "border-gray-300" : "border-red-500"
+            className={`w-full p-2 border rounded-md  bg-MoradoO/30 text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:ring-0 ${
+              contraseñasMatch ? "dark:border-VerdeC/50 dark:focus:border-VerdeC  focus:border-MoradoO  border-MoradoO" : "border-red-500/50  focus:border-red-500"
             }`}
             type="password"
             id="confirmContraseña"
@@ -146,7 +147,7 @@ const RegisterForm = () => {
         </div>
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
         <button
-          className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo"
+          className="py-2 px-4 rounded-md w-full border-b-4 dark:border-VerdeC border-MoradoO hover:bg-MoradoO/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO text-white bg-MoradoO/30 dark:bg-Moradote"
           type="submit"
         >
           Registrarse
