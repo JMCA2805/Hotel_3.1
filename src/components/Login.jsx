@@ -59,13 +59,13 @@ const Login = () => {
   };
 
   return (
-    <section className="bg-verdearb dark:bg-gray-900">
+    <section className="bg-MoradoO dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
           href="#"
           className="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white mb-7"
         >
-          <img className="h-40 inline " src="./uvm.png" alt="" />
+          <img className="h-40 inline " src="./logo.png" alt="" />
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
@@ -112,7 +112,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                className="w-full text-white bg-verdeo hover:bg-rojo focus:ring-4 focus:outline-none focus:shadow-verdeo dark:bg-verdeo dark:hover:bg-primary-600 dark:focus:shadow-primary-500 rounded-lg py-3.5 font-semibold text-center"
+                className="w-full bg-MoradoC text-white bg-verdeo hover:bg-rojo focus:ring-4 focus:outline-none focus:shadow-verdeo dark:bg-verdeo dark:hover:bg-primary-600 dark:focus:shadow-primary-500 rounded-lg py-3.5 font-semibold text-center"
               >
                 Ingresar
               </button>
