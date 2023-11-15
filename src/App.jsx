@@ -13,6 +13,7 @@ import Footer from './components/Footer'
 import Precios from "./components/Reservas/Precios";
 import Blog from "./components/Blog/Blog";
 import ReservasForm from "./components/Reservas/Reservas";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -22,10 +23,16 @@ function App() {
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<><Hero /><Resumen/><Services/><Info /><ReviewsL /></>} />
+            <Route path="/" element={<><Hero /><Resumen/><Services/><Info /><ReviewsL /></>} />
+            
+            <Route element={<ProtectedRoute allowedRoles={["usuario", "admin"]} />}>
+            <Route path="/Reserva" element={<><ReservasForm/><Precios/></>} />
+              </Route>
+
+
+
               <Route path="/Login" element={<><Login/></>} />
               <Route path="/Registro" element={<><RegisterForm/></>} />
-              <Route path="/Reserva" element={<><ReservasForm/><Precios/></>} />
               <Route path="/Blog" element={<Blog/>} />
             </Routes>
             <Footer/>

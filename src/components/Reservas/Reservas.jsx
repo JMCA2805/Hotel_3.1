@@ -81,143 +81,139 @@ const ReservationForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-MoradoO">
-      <form
-        className="bg-white p-8 rounded-lg shadow-lg w-96"
-        onSubmit={handleSubmit}
-      >
-        <h2 className="text-2xl font-semibold mb-6">Reservar</h2>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="nombre">
-            Nombre
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="text"
-            id="nombre"
-            value={nombre}
-            onChange={(e) => setNombre(e.target.value)}
-            required
-          />
+    <div className="flex justify-center items-center min-h-screen my-8 md:px-4 lg:px-8 m-auto py-8 md:py-16 font-poppins bg-Moradote dark:bg-MoradoO mx-4 rounded-2xl gap-8 md:gap-0 dark:border dark:border-VerdeC">
+  <form className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl">
+              <h2 className="text-2xl font-semibold mb-6">Reservar</h2>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="nombre">
+              Nombre
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="text"
+              id="nombre"
+              value={nombre}
+              onChange={(e) => setNombre(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="apellido">
+              Apellido
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="text"
+              id="apellido"
+              value={apellido}
+              onChange={(e) => setApellido(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="cedula">
+              Cédula
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="text"
+              id="cedula"
+              value={cedula}
+              onChange={(e) => setCedula(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="correo">
+              Correo electrónico
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="email"
+              id="correo"
+              value={correo}
+              onChange={(e) => setCorreo(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="telefono">
+              Teléfono
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="tel"
+              id="telefono"
+              value={telefono}
+              onChange={(e) => setTelefono(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="fechaEntrada">
+              Fecha de entrada
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="date"
+              id="fechaEntrada"
+              value={fechaEntrada}
+              onChange={(e) => setFechaEntrada(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="fechaSalida">
+              Fecha de salida
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="date"
+              id="fechaSalida"
+              value={fechaSalida}
+              onChange={(e) => setFechaSalida(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="nPersonas">
+              Número de personas
+            </label>
+            <input
+              className="w-full p-2 border border-verdeo rounded-md"
+              type="number"
+              id="nPersonas"
+              value={nPersonas}
+              onChange={(e) => setNPersonas(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="tHabitacion">
+              Tipo de habitación
+            </label>
+            <select
+              className="w-full p-2 border border-verdeo rounded-md"
+              id="tHabitacion"
+              value={tHabitacion}
+              onChange={(e) => setTHabitacion(e.target.value)}
+              required
+            >
+              <option value="">Seleccionar tipo</option>
+              <option value="normal">Normal</option>
+              <option value="vip">VIP</option>
+              <option value="presidencial">Presidencial</option>
+            </select>
+          </div>
+  {error && <div className="text-red-500 text-sm mb-4 col-span-2">{error}</div>}
+          <button className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo col-span-2" type="submit">
+            Reservar
+          </button>
         </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="apellido">
-            Apellido
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="text"
-            id="apellido"
-            value={apellido}
-            onChange={(e) => setApellido(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="cedula">
-            Cédula
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="text"
-            id="cedula"
-            value={cedula}
-            onChange={(e) => setCedula(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="correo">
-            Correo electrónico
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="email"
-            id="correo"
-            value={correo}
-            onChange={(e) => setCorreo(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="telefono">
-            Teléfono
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="tel"
-            id="telefono"
-            value={telefono}
-            onChange={(e) => setTelefono(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="fechaEntrada">
-            Fecha de entrada
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="date"
-            id="fechaEntrada"
-            value={fechaEntrada}
-            onChange={(e) => setFechaEntrada(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="fechaSalida">
-            Fecha de salida
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="date"
-            id="fechaSalida"
-            value={fechaSalida}
-            onChange={(e) => setFechaSalida(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="nPersonas">
-            Número de personas
-          </label>
-          <input
-            className="w-full p-2 border border-verdeo rounded-md"
-            type="number"
-            id="nPersonas"
-            value={nPersonas}
-            onChange={(e) => setNPersonas(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label className="block font-medium mb-2" htmlFor="tHabitacion">
-            Tipo de habitación
-          </label>
-          <select
-            className="w-full p-2 border border-verdeo rounded-md"
-            id="tHabitacion"
-            value={tHabitacion}
-            onChange={(e) => setTHabitacion(e.target.value)}
-            required
-          >
-            <option value="">Seleccionar tipo</option>
-            <option value="individual">Individual</option>
-            <option value="doble">Doble</option>
-            <option value="suite">Suite</option>
-          </select>
-        </div>
-        {error && <div className="text-red-500 text-sm mb-4">{error}</div>}
-        <button
-          className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo"
-          type="submit"
-        >
-          Reservar
-        </button>
       </form>
     </div>
   );
-};
+}
 
 export default ReservationForm;

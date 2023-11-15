@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsChevronCompactLeft, BsChevronCompactRight } from "react-icons/bs";
 import { RxDotFilled } from "react-icons/rx";
 
 function Resumen() {
   const slides = [
     {
-      url: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80",
+      url: "/hotel1.jpg",
     },
     {
-      url: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
+      url: "/hotel2.webp",
     },
     {
-      url: "https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80",
+      url: "/hotel3.jpeg",
     },
     {
-      url: "https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80",
+      url: "/hotel4.jpg",
     },
     {
-      url: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80",
+      url: "/hotel5.jpg",
     },
   ];
 
@@ -39,6 +39,16 @@ function Resumen() {
     setCurrentIndex(slideIndex);
   };
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [currentIndex]);
+
   return (
     <div className="flex flex-col md:flex-row max-w h-[800px] md:h-[500px] md:px-4 lg:px-8 m-auto py-8 md:py-16 font-poppins bg-Moradote dark:bg-MoradoO mx-4 my-4 text-white rounded-2xl gap-8 md:gap-0 dark:border dark:border-VerdeC">
       <div className="w-full md:w-1/2 px-8 md:px-0 h-1/2 md:h-full">
@@ -59,15 +69,16 @@ function Resumen() {
             <div
               key={slideIndex}
               onClick={() => goToSlide(slideIndex)}
-              className="text-2xl cursor-pointer"
+              className={`text-2xl cursor-pointer ${
+                slideIndex === currentIndex ? "text-white" : "text-gray-300"
+              }`}
             >
-                <RxDotFilled />
-              
+              <RxDotFilled />
             </div>
           ))}
         </div>
       </div>
-      <div className="w-full h-1/2 md:h-full md:w-1/2 p-8 md:p-0 mr-0 md:px-0 md:pl-16 md:mr-6 ">
+      <div className="w-full h-1/2 md:h-full md:w-1/2 p-8 md:p-0 mr-0 md:px-0 md:pl-16 md:mr-6">
         <h1 className="lg:text-3xl font-bold mb-4 sm:text-2xl text-2xl">
           Un Símbolo de Coro
         </h1>
@@ -78,9 +89,7 @@ function Resumen() {
           historia como refugio para disidentes políticos durante la dictadura.
           A pesar de la crisis económica, el hotel seguía siendo un lugar
           especial para muchos, que recordaban con cariño los momentos felices
-          que habían vivido entre sus paredes. Aunque su futuro era incierto,
-          siempre permanecería en la memoria de quienes lo conocieron en su
-          época dorada.{" "}
+          que habían vivido entre sus paredes. Aunquesu futuro era incierto, siempre permaneceríaVisible en la memoria de quienes lo conocieron en su época dorada.{" "}
         </p>
       </div>
     </div>
