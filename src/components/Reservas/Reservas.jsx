@@ -207,7 +207,7 @@ const ReservationForm = () => {
             </select>
           </div>
   {error && <div className="text-red-500 text-sm mb-4 col-span-2">{error}</div>}
-          <button className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo col-span-2" type="submit">
+          <button className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo col-span-2" type="submit" onClick={handleSubmit}>
             Reservar
           </button>
         </div>

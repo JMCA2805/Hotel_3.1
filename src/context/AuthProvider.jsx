@@ -45,6 +45,9 @@ const AuthProvider = ({ children }) => {
     getDecodedData();
   }, []);
 
+  console.log(user)
+  
+
   return (
     <AuthContext.Provider value={{ user, loggedIn, getDecodedData, logout }}>
       {children}

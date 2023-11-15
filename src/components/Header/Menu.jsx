@@ -32,15 +32,6 @@ const Menu = (props) => {
 
         {user.rol === "admin" && (
           <>
-            <Link
-              to="/Inventario"
-              className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
-              onClick={props.toggleLVisibility}
-            >
-              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
-                Inventario
-              </div>
-            </Link>
 
             <Link
               to="/Admin"
@@ -96,7 +87,7 @@ const Menu = (props) => {
               </div>
             </Link>
             <Link
-              to="/Pfp"
+              to="/Profile"
               className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
               onClick={props.toggleLVisibility}
             >
