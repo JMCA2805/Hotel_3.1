@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import { IconContext } from "react-icons";
 import { FaMoon, FaSun } from "react-icons/fa6";
 import { useDark } from "../../context/DarkModeProvider";
+import { Link } from "react-router-dom";
 
 function Header(props) {
   // Estados del componente menu
@@ -40,14 +41,14 @@ function Header(props) {
     <nav className="bg-MoradoC dark:bg-black">
       <div className="w-full flex items-center h-16 px-4 shadow-lg font-poppins dark:border-b dark:border-white/30">
         {/* Logo */}
-        <div className="flex-shrink-0 font-extrabold tracking-wider text-white text-2xl">
+        <Link to={"/"} className="flex-shrink-0 font-extrabold tracking-wider text-white text-2xl">
           <img
             className="h-14 inline hover:cursor-pointer mx-px"
             src="logo.png"
             alt="Logo-Hotel-Águila"
           />
           Hotel Águila
-        </div>
+        </Link>
 
         <div className="flex gap-2 h-full justify-end items-center w-full">
           {/* Menu */}

@@ -4,9 +4,7 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
-
 const API = import.meta.env.VITE_RESERVATION_URL;
-
 
 const ReservationForm = () => {
   const [nombre, setNombre] = useState("");
@@ -42,9 +40,8 @@ const ReservationForm = () => {
       return;
     }
 
-
     const reserva = {
-      idUsuario: user.id,      
+      idUsuario: user.id,
       nombre,
       apellido,
       cedula,
@@ -81,16 +78,16 @@ const ReservationForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen my-8 md:px-4 lg:px-8 m-auto py-8 md:py-16 font-poppins bg-Moradote dark:bg-MoradoO mx-4 rounded-2xl gap-8 md:gap-0 dark:border dark:border-VerdeC">
-  <form className="bg-white p-8 rounded-lg shadow-lg w-full max-w-xl">
-              <h2 className="text-2xl font-semibold mb-6">Reservar</h2>
+    <div className="flex justify-center items-center my-8 md:px-4 lg:px-8 m-auto py-0 md:py-16 font-poppins bg-Moradote/50 dark:bg-MoradoO/50 mx-4 rounded-2xl gap-8 md:gap-0 dark:border border-MoradoO dark:border-VerdeC/50">
+      <form className="bg-Moradote p-8 rounded-lg shadow-lg w-full max-w-xl dark:bg-MoradoO border-MoradoO dark:border-VerdeC dark:border text-white">
+        <h2 className="text-2xl font-semibold mb-6">Reservar</h2>
         <div className="grid grid-cols-2 gap-4">
           <div className="mb-4">
             <label className="block font-medium mb-2" htmlFor="nombre">
               Nombre
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="text"
               id="nombre"
               value={nombre}
@@ -103,7 +100,7 @@ const ReservationForm = () => {
               Apellido
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="text"
               id="apellido"
               value={apellido}
@@ -116,7 +113,7 @@ const ReservationForm = () => {
               Cédula
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="text"
               id="cedula"
               value={cedula}
@@ -129,7 +126,7 @@ const ReservationForm = () => {
               Correo electrónico
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="email"
               id="correo"
               value={correo}
@@ -142,7 +139,7 @@ const ReservationForm = () => {
               Teléfono
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="tel"
               id="telefono"
               value={telefono}
@@ -155,7 +152,7 @@ const ReservationForm = () => {
               Fecha de entrada
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="date"
               id="fechaEntrada"
               value={fechaEntrada}
@@ -168,7 +165,7 @@ const ReservationForm = () => {
               Fecha de salida
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="date"
               id="fechaSalida"
               value={fechaSalida}
@@ -181,7 +178,7 @@ const ReservationForm = () => {
               Número de personas
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="number"
               id="nPersonas"
               value={nPersonas}
@@ -194,7 +191,7 @@ const ReservationForm = () => {
               Tipo de habitación
             </label>
             <select
-              className="w-full p-2 border border-verdeo rounded-md"
+              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO  border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               id="tHabitacion"
               value={tHabitacion}
               onChange={(e) => setTHabitacion(e.target.value)}
@@ -206,14 +203,20 @@ const ReservationForm = () => {
               <option value="presidencial">Presidencial</option>
             </select>
           </div>
-  {error && <div className="text-red-500 text-sm mb-4 col-span-2">{error}</div>}
-          <button className="bg-MoradoC text-white py-2 px-4 rounded-md w-full hover:bg-rojo col-span-2" type="submit" onClick={handleSubmit}>
+          {error && (
+            <div className="text-red-500 text-sm mb-4 col-span-2">{error}</div>
+          )}
+          <button
+            className="py-2 px-4 rounded-md w-full col-span-2  border-b-4 dark:border-VerdeC border-MoradoO hover:bg-MoradoO/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO text-white bg-MoradoO/30 dark:bg-Moradote"
+            type="submit"
+            onClick={handleSubmit}
+          >
             Reservar
           </button>
         </div>
       </form>
     </div>
   );
-}
+};
 
 export default ReservationForm;
