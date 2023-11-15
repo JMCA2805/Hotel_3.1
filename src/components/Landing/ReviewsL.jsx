@@ -60,7 +60,7 @@ const ReviewCard = ({ icon, title, description, color }) => {
 const ReviewsL = () => {
   return (
     <div className="h-full w-full px-4">
-      <div className="container py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+      <div className="py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
         {reviews.map((review, index) => (
           <ReviewCard
             key={index}

@@ -18,7 +18,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="px-4 bg-verdeo md:px-8 lg:px-10 bg-Moradote dark:border-t dark:border-VerdeC dark:bg-MoradoO font-[Barlow]">
+      <footer className="px-4 bg-verdeo md:px-8 lg:px-10 bg-Moradote dark:border-t dark:border-VerdeC/50 dark:bg-black font-[Barlow]">
 
         <div className="mx-auto max-w-screen-xl text-center font-bold">
           {/* Logo */}
