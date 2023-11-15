@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
@@ -18,15 +18,17 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   //Comprobación de la existencia de un token
-  if (loggedIn) {
-    Swal.fire({
-      icon: "success",
-      title: "Ya estas Logueado",
-      text: "¡Bienvenido!",
-    }).then(() => {
-      navigate("/");
-    });
-  }
+  useEffect(() => {
+    if (loggedIn) {
+      Swal.fire({
+        icon: "success",
+        title: "Ya estas Logueado",
+        text: "¡Bienvenido!",
+      }).then(() => {
+        navigate("/");
+      });
+    }
+  }, [loggedIn]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();

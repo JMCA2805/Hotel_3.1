@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
@@ -13,15 +13,17 @@ const Login = () => {
   const { getDecodedData, loggedIn } = useContext(AuthContext); // Obtener la función getDecodedData del contexto
 
   //Comprobación de la existencia de un token
-  if (loggedIn) {
-    Swal.fire({
-      icon: "success",
-      title: "Ya estas Logueado",
-      text: "¡Bienvenido!",
-    }).then(() => {
-      navigate("/");
-    });
-  }
+  useEffect(() => {
+    if (loggedIn) {
+      Swal.fire({
+        icon: "success",
+        title: "Ya estas Logueado",
+        text: "¡Bienvenido!",
+      }).then(() => {
+        navigate("/");
+      });
+    }
+  }, [loggedIn]);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);

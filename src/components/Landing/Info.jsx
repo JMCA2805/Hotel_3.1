@@ -7,7 +7,6 @@ import { FaCloudSun } from "react-icons/fa6";
 
 export default function Info() {
   //Estados
-  const [name, setName] = useState("");
   const [tempT, setTempT] = useState("");
   const [tempMx, setTempMax] = useState("");
   const [tempMn, setTempMin] = useState("");
@@ -21,7 +20,6 @@ export default function Info() {
   //Consulta del clima
   const handleWheater = async () => {
     const response = await axios.post(API);
-    await setName(response.data.name);
     const tt = await temperatura(response.data.main.temp);
     await setTempT(tt);
     const tmx = await temperatura(response.data.main.temp_max);
