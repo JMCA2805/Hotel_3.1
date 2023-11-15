@@ -7,9 +7,11 @@ import { FaMoon, FaSun } from "react-icons/fa6";
 import { useDark } from "../../context/DarkModeProvider";
 
 function Header(props) {
+  // Estados del componente menu
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  // Funcion de visibilidad del loader
   const toggleLVisibility = () => {
     setLoading(true);
 
@@ -28,21 +30,17 @@ function Header(props) {
     }
   }, [theme]);
 
+  // Funcion de cambio de tema
   const handleChangeTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-  // El componente Header representa la barra de navegación en la parte superior de la página.
-
-  // El estado showMobileMenu se utiliza para mostrar o ocultar el menú en dispositivos móviles cuando se hace clic en el botón de menú.
-
-  // La función toggleHeroVisibility se activa cuando se hace clic en un elemento del menú y se encarga de mostrar un componente adicional (no mostrado en el código proporcionado). También activa el Loader durante 3 segundos para simular una carga.
-
-  // La función toggleTablaVisibility se activa cuando se hace clic en otro elemento del menú y se encarga de mostrar otro componente (no mostrado en el código proporcionado). También activa el Loader durante 3 segundos para simular una carga.
 
   return (
+    // Barra de navegacion
     <nav className="bg-MoradoC dark:bg-black">
-      <div className="w-full flex items-center h-16 px-4 shadow-lg dark:shadow-VerdeO/50 font-poppins">
-        <div className="flex-shrink-0 font-bold tracking-wider text-white text-xl">
+      <div className="w-full flex items-center h-16 px-4 shadow-lg font-poppins dark:border-b dark:border-white/30">
+        {/* Logo */}
+        <div className="flex-shrink-0 font-extrabold tracking-wider text-white text-2xl">
           <img
             className="h-14 inline hover:cursor-pointer mx-px"
             src="logo.png"
@@ -52,10 +50,13 @@ function Header(props) {
         </div>
 
         <div className="flex gap-2 h-full justify-end items-center w-full">
+          {/* Menu */}
           <div className="hidden md:block">
             <Menu toggleLVisibility={toggleLVisibility} />
           </div>
-          <div className="rounded-full text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO h-10 w-10 ">
+
+          {/* Botón de DarkMode */}
+          <div className="rounded-full text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO h-10 w-10 ">
             <IconContext.Provider
               value={{
                 color: "white",
@@ -65,17 +66,18 @@ function Header(props) {
             >
               <button
                 onClick={handleChangeTheme}
-                className="flex justify-center items-center w-full h-full"
+                className="flex justify-center items-center w-full h-full dark:border dark:border-VerdeO rounded-full"
               >
                 {theme === "dark" ? <FaSun /> : <FaMoon />}
               </button>
             </IconContext.Provider>
           </div>
         </div>
-
+        
+      {/*Menu desplegable movil*/}
         <button
           type="button"
-          className="md:hidden bg-MoradoO/70 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out ml-2"
+          className="md:hidden bg-Moradote inline-flex items-center justify-center p-2 rounded-full text-white hover:bg-gray-700 focus:outline-none transition duration-150 ease-in-out ml-2 border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO"
           onClick={() => setShowMobileMenu(!showMobileMenu)}
         >
           <svg
@@ -96,9 +98,9 @@ function Header(props) {
       <div className="md:hidden">
         {showMobileMenu && <Menu toggleLVisibility={toggleLVisibility} />}
       </div>
-      {/* El bloque de código anterior representa el menú desplegable para dispositivos móviles. Se muestra solo cuando showMobileMenu es verdadero. */}
+
+      {/* Loaders*/}
       {loading && <Loader />}
-      {/* El componente Loader se muestra si loading es verdadero, lo que indica que se está realizando una carga. */}
     </nav>
   );
 }

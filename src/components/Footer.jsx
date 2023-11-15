@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../context/AuthProvider";
-import Loader from "./Header/Loader";
 
 const Footer = () => {
   const location = useLocation();
@@ -19,7 +18,7 @@ const Footer = () => {
 
   return (
     <div>
-      <footer className="p-4 bg-verdeo md:p-8 lg:p-10 dark:bg-gray-800 font-[Barlow]">
+      <footer className="px-4 bg-verdeo md:px-8 lg:px-10 bg-Moradote dark:border-t dark:border-VerdeC dark:bg-MoradoO font-[Barlow]">
 
         <div className="mx-auto max-w-screen-xl text-center font-bold">
           {/* Logo */}
@@ -30,7 +29,7 @@ const Footer = () => {
             <img className="h-40 inline" src="./logo.png" alt="" />
           </a>
           {/* Descripción */}
-          <p className="my-6 text-white dark:text-gray-400">
+          <p className="mb-6 text-white dark:text-gray-400">
             Un gran hotel para los venezolanos.
           </p>
           {/* Enlaces */}
@@ -82,12 +81,12 @@ const Footer = () => {
             )}
           </ul>
           {/* Derechos de autor */}
-          <span className="text-sm text-white sm:text-center dark:text-gray-400">
-            © 2023{" "}
+          <span className="text-sm text-white/70 sm:text-center dark:text-gray-400">
+            Hotel Águila © 2023{" "}
+            All Rights Reserved
             <a href="#" className="hover:underline">
-              JMLJ™
+            {" "}- JMLJ™
             </a>
-            . All Rights Reserved.
           </span>
         </div>
       </footer>

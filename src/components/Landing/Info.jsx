@@ -43,7 +43,7 @@ export default function Info() {
   }, []);
   return (
     <>
-      <div className="flex max-w flex-col md:flex-row h-[750px] md:h-[450px] m-auto py-8 md:py-16 font-poppins bg-MoradoO mx-4 my-4 text-white rounded-2xl md:gap-0 gap-8">
+      <div className="flex max-w flex-col md:flex-row h-[750px] md:h-[450px] m-auto py-8 md:py-16 font-poppins bg-Moradote dark:bg-MoradoO mx-4 my-4 text-white rounded-2xl md:gap-0 gap-8 dark:border dark:border-VerdeC">
         {/* Mapa */}
         <div className="w-full md:w-1/2 h-1/2 md:h-full px-10">
           <MapContainer center={location} zoom={10} scrollWheelZoom={false}>
@@ -58,7 +58,7 @@ export default function Info() {
         </div>
         {/* Clima */}
         <div className="w-full md:w-1/2 h-1/2 md:h-full px-10">
-          <div className="w-full h-full rounded-2xl border-2 border-VerdeO p-4">
+          <div className="w-full h-full rounded-2xl border border-MoradoO dark:border-VerdeC p-4">
             <div className="font-poppins text-4xl tracking-tight font-extrabold flex justify-center items-center w-full">
               <span>Clima</span>
             </div>

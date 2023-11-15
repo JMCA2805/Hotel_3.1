@@ -34,7 +34,7 @@ const AuthProvider = ({ children }) => {
     localStorage.removeItem("token");
 
     // Establecer user y loggedIn a null y false respectivamente
-    setUser(null);
+    setUser("null");
     setLoggedIn(false);
 
     // Realizar cualquier otra limpieza o redireccionamiento necesario después de cerrar sesión

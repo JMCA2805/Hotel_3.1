@@ -13,44 +13,45 @@ const Menu = (props) => {
       <div className="block px-2 md:px-0 py-3 space-y-2 md:space-y-0 md:space-x-2 font-semibold font-poppins text-base">
         <Link
           to="/"
-          className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
+          className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO"
           onClick={props.toggleLVisibility}
         >
-          Inicio
+          <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+            Inicio
+          </div>
         </Link>
         <Link
           to="/Blog"
-          className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
+          className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
           onClick={props.toggleLVisibility}
         >
-          Blog
-        </Link>
-        <Link
-          to="/Contactos"
-          className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
-          onClick={props.toggleLVisibility}
-        >
-          Contactos
+          <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+            Blog
+          </div>
         </Link>
 
         {user.rol === "admin" && (
           <>
             <Link
               to="/Inventario"
-              className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
+              className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
               onClick={props.toggleLVisibility}
             >
-              Inventario
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Inventario
+              </div>
             </Link>
 
             <Link
               to="/Admin"
-              className={`block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO  ${
+              className={`block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO   ${
                 location.pathname === "/Registro" ? "hidden" : ""
               }`}
               onClick={props.toggleLVisibility}
             >
-              Admin
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Admin
+              </div>
             </Link>
           </>
         )}
@@ -59,43 +60,60 @@ const Menu = (props) => {
           <>
             <Link
               to="/Login"
-              className={`block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO  ${
+              className={`block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO   ${
                 location.pathname === "/Login" ? "hidden" : ""
               }`}
               onClick={props.toggleLVisibility}
             >
-              Login
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Login
+              </div>
             </Link>
 
             <Link
               to="/Registro"
-              className={`block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO  ${
+              className={`block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO   ${
                 location.pathname === "/Registro" ? "hidden" : ""
               }`}
               onClick={props.toggleLVisibility}
             >
-              Registro
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Registro
+              </div>
             </Link>
           </>
         )}
 
         {isTokenPresent && loggedIn && (
-          <Link
-            to="/"
-            className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
-            onClick={logout} // Utilizar la función logout para realizar el logout
-          >
-            Logout
-          </Link>
-        )}
-        {isTokenPresent && loggedIn && (
-          <Link
-            to="/Pfp"
-            className="block md:inline-block px-3 py-2 rounded-md text-white bg-MoradoO/70 focus:outline-none focus:text-white hover:border-2 hover:border-VerdeO "
-            onClick={props.toggleLVisibility}
-          >
-            Perfil
-          </Link>
+          <>
+            <Link
+              to="/Reserva"
+              className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
+              onClick={props.toggleLVisibility}
+            >
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Reserva
+              </div>
+            </Link>
+            <Link
+              to="/Pfp"
+              className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
+              onClick={props.toggleLVisibility}
+            >
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Perfil
+              </div>
+            </Link>
+            <Link
+              to="/"
+              className="block md:inline-block rounded-md text-white bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO  "
+              onClick={logout} // Utilizar la función logout para realizar el logout
+            >
+              <div className="flex rounded-md dark:border dark:border-VerdeO w-full h-full px-3 py-2">
+                Logout
+              </div>
+            </Link>
+          </>
         )}
       </div>
     </>
