@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthProvider";
 
 const API = import.meta.env.VITE_REGISTER_URL;
 
@@ -13,7 +14,19 @@ const RegisterForm = () => {
   const [confirmContraseña, setConfirmContraseña] = useState("");
   const [contraseñasMatch, setContraseñasMatch] = useState(true);
   const [error, setError] = useState("");
+  const { loggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  //Comprobación de la existencia de un token
+  if (loggedIn) {
+    Swal.fire({
+      icon: "success",
+      title: "Ya estas Logueado",
+      text: "¡Bienvenido!",
+    }).then(() => {
+      navigate("/");
+    });
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -128,7 +141,9 @@ const RegisterForm = () => {
           </label>
           <input
             className={`w-full p-2 border rounded-md  bg-MoradoO/30 text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:ring-0 ${
-              contraseñasMatch ? "dark:border-VerdeC/50 dark:focus:border-VerdeC  focus:border-MoradoO  border-MoradoO" : "border-red-500/50  focus:border-red-500"
+              contraseñasMatch
+                ? "dark:border-VerdeC/50 dark:focus:border-VerdeC  focus:border-MoradoO  border-MoradoO"
+                : "border-red-500/50  focus:border-red-500"
             }`}
             type="password"
             id="confirmContraseña"

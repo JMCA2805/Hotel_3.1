@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import AuthProvider, { AuthContext } from "../context/AuthProvider"; // Ruta relativa al archivo AuthProvider
+import { AuthContext } from "../context/AuthProvider"; // Ruta relativa al archivo AuthProvider
 
 const API = import.meta.env.VITE_LOGIN_URL;
 
@@ -10,7 +10,18 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const { getDecodedData } = useContext(AuthContext); // Obtener la función getDecodedData del contexto
+  const { getDecodedData, loggedIn } = useContext(AuthContext); // Obtener la función getDecodedData del contexto
+
+  //Comprobación de la existencia de un token
+  if (loggedIn) {
+    Swal.fire({
+      icon: "success",
+      title: "Ya estas Logueado",
+      text: "¡Bienvenido!",
+    }).then(() => {
+      navigate("/");
+    });
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
