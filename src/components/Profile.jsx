@@ -6,7 +6,7 @@ const UserProfile = () => {
 
   
 
-
+ ///Esto estara proximamente integrado con nuestra Base de Datos de Usuarios, para detectar el token actual y compararlo con los usuarios para asi encontrar sus datos
   return (
     <div className="bg-gray-100 py-8">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,9 +17,9 @@ const UserProfile = () => {
               <img
                 className="h-16 w-16 rounded-full border-2 border-white"
                 src="https://example.com/user-profile.jpg"
-                alt="User Profile"
+                alt="Proximamente / En Desarrollo"
               />
-              <h1 className="text-2xl font-semibold text-white ml-4">John Doe</h1>
+              <h1 className="text-2xl font-semibold text-white ml-4">Proximamente / En Desarrollo</h1>
             </div>
           </div>
 
@@ -41,7 +41,7 @@ const UserProfile = () => {
                 />
               </svg>
               <span className="text-gray-700">Correo electrónico:</span>
-              <span className="ml-2">john.doe@example.com</span>
+              <span className="ml-2">Proximamente / En Desarrollo</span>
             </div>
             <div className="flex items-center mb-4">
               <svg
@@ -59,7 +59,7 @@ const UserProfile = () => {
                 />
               </svg>
               <span className="text-gray-700">Teléfono:</span>
-              <span className="ml-2">123-456-7890</span>
+              <span className="ml-2">Proximamente / En Desarrollo</span>
             </div>
             <div className="flex items-center">
               <svg
@@ -78,8 +78,7 @@ const UserProfile = () => {
               </svg>
               <span className="text-gray-700">Descripción:</span>
               <span className="ml-2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed gravida sapien sed
-                libero cursus, non consectetur elit commodo.
+              Proximamente / En Desarrollo
               </span>
             </div>
           </div>
