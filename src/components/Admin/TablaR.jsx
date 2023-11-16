@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_GETRESERVAS_URL;
-const APIEDIT = import.meta.env.VITE_EDIT_URL;
+const APIEDIT = import.meta.env.VITE_EDITR_URL;
 
 const TablaR = () => {
   const [reservas, setReservas] = useState([]);
@@ -26,7 +26,6 @@ const TablaR = () => {
   }, []);
 
   const editarReserva = (reserva) => {
-    console.log(reserva);
     setReservaSeleccionada(reserva);
     setDatosActualizados({ ...reserva });
   };
@@ -45,12 +44,12 @@ const TablaR = () => {
 
     axios
       .put(APIEDIT, {
-        correo: reservaSeleccionada.correo,
+        id: reservaSeleccionada._id,
         datosActualizados,
       })
       .then((response) => {
         const reservasActualizadas = reservas.map((reserva) => {
-          if (reserva.correo === reservaSeleccionada.correo) {
+          if (reserva._id === reservaSeleccionada._id) {
             return { ...reserva, ...datosActualizados };
           }
           return reserva;
@@ -163,7 +162,7 @@ const TablaR = () => {
                 <tbody>
                   {Array.isArray(reservas) ? (
                     reservas.map((reserva) => (
-                      <tr key={reserva.id}>
+                      <tr key={reserva._id}>
                         <td className="sm:p-2 md:px-6 md:py-3 text-center">
                           {reserva.nombre}
                         </td>
@@ -220,20 +219,21 @@ const TablaR = () => {
         </div>
       )}
       {reservaSeleccionada && (
-        <div className="mx-24 font-[Barlow] bg-MoradoC dark:bg-MoradoO rounded-lg p-4 text-white mt-8 border dark:border-VerdeC border-MoradoO">
+        <div className="mx-4 md:mx-24 font-[Barlow] bg-MoradoC dark:bg-MoradoO rounded-lg p-4 text-white mt-8 border dark:border-VerdeC border-MoradoO">
           <h2 className="text-lg font-semibold">Editar reserva</h2>
           <form>
             <div className="grid grid-cols-2 gap-4">
               <div className="mb-4">
                 <label className="block font-medium mb-2" htmlFor="nombre">
-                  Nombre
+                  Nombre:
                 </label>
                 <input
-                  className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="text"
                   id="nombre"
+                  name="nombre"
                   value={datosActualizados.nombre || ""}
                   onChange={handleInputChange}
+                  className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   required
                 />
               </div>
@@ -245,6 +245,7 @@ const TablaR = () => {
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="text"
                   id="apellido"
+                  name="apellido"
                   value={datosActualizados.apellido || ""}
                   onChange={handleInputChange}
                   required
@@ -258,6 +259,7 @@ const TablaR = () => {
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="text"
                   id="cedula"
+                  name="cedula"
                   value={datosActualizados.cedula || ""}
                   onChange={handleInputChange}
                   required
@@ -270,6 +272,7 @@ const TablaR = () => {
                 <input
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="email"
+                  name="correo"
                   id="correo"
                   value={datosActualizados.correo || ""}
                   onChange={handleInputChange}
@@ -283,6 +286,7 @@ const TablaR = () => {
                 <input
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="tel"
+                  name="telefono"
                   id="telefono"
                   value={datosActualizados.telefono || ""}
                   onChange={handleInputChange}
@@ -300,6 +304,7 @@ const TablaR = () => {
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="date"
                   id="fechaEntrada"
+                  name="fechaEntrada"
                   value={fechaI || ""}
                   onChange={handleInputChange}
                   required
@@ -313,6 +318,7 @@ const TablaR = () => {
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="date"
                   id="fechaSalida"
+                  name="fechaSalida"
                   value={fechaF || ""}
                   onChange={handleInputChange}
                   required
@@ -326,6 +332,7 @@ const TablaR = () => {
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   type="number"
                   id="nPersonas"
+                  name="nPersonas"
                   value={datosActualizados.nPersonas || ""}
                   onChange={handleInputChange}
                   required
@@ -338,6 +345,7 @@ const TablaR = () => {
                 <select
                   className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO  border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
                   id="tHabitacion"
+                  name="tHabitacion"
                   value={datosActualizados.tHabitacion || ""}
                   onChange={handleInputChange}
                   required

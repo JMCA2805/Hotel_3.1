@@ -1,12 +1,11 @@
 import { useLocation, Navigate, Outlet } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../Context/authProvider";
+import { AuthContext } from "../context/AuthProvider";
 import Swal from "sweetalert2";
 
 const ProtectedRoute = ({ allowedRoles }) => {
   const { user } = useContext(AuthContext);
   const location = useLocation();
-  console.log(user)
 
   if (user === null) {
     // Si el objeto user es null, permitir el acceso a la página de inicio de sesión

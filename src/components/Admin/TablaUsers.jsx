@@ -130,7 +130,7 @@ const UserTable = () => {
                 <tbody>
                   {Array.isArray(users) ? (
                     users.map((usuario) => (
-                      <tr key={usuario.id}>
+                      <tr key={usuario._id}>
                         <td className="sm:p-2 md:px-6 md:py-3 text-center">
                           {usuario.nombre}
                         </td>
@@ -172,7 +172,7 @@ const UserTable = () => {
       )}
 
       {usuarioSeleccionado && (
-        <div className="mx-24 font-[Barlow] bg-MoradoC dark:bg-MoradoO rounded-lg p-4 text-white mt-8 border dark:border-VerdeC border-MoradoO">
+        <div className="mx-4 md:mx-24  font-[Barlow] bg-MoradoC dark:bg-MoradoO rounded-lg p-4 text-white mt-8 border dark:border-VerdeC border-MoradoO">
           <h2 className="text-lg font-semibold">Editar usuario</h2>
           <form>
             <div className="flex flex-col mt-2">
