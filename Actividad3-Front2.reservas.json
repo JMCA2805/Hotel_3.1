@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "6555ca4dc7fe790c40cfbc5f"
+  },
+  "idUsuario": "6555c9e8c7fe790c40cfbc57",
+  "nombre": "Maikel",
+  "apellido": "Villegas",
+  "correo": "maikelvr2004@gmail.com",
+  "cedula": "30302836",
+  "telefono": "04247803921",
+  "fechaEntrada": {
+    "$date": "2023-11-17T00:00:00.000Z"
+  },
+  "fechaSalida": {
+    "$date": "2023-11-30T00:00:00.000Z"
+  },
+  "nPersonas": 3,
+  "tHabitacion": "vip",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6555cab8c7fe790c40cfbc61"
+  },
+  "idUsuario": "6555c9e8c7fe790c40cfbc57",
+  "nombre": "Luis",
+  "apellido": "Monsalve",
+  "correo": "luis.monri12@gmail.com",
+  "cedula": "30.380.310",
+  "telefono": "0271-2440996",
+  "fechaEntrada": {
+    "$date": "2023-11-24T00:00:00.000Z"
+  },
+  "fechaSalida": {
+    "$date": "2023-11-30T00:00:00.000Z"
+  },
+  "nPersonas": 4,
+  "tHabitacion": "presidencial",
+  "__v": 0
+}]
