@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import DarkModeGlobal from "./context/DarkModeProvider";
 import Services from "./components/Landing/Services";
 import Info from "./components/Landing/Info";
-import ReviewsL from "./components/Landing/ReviewsL";
+import ReviewsL from "./components/Reviews/ReviewsL";
 import Login from "./components/Login";
 import RegisterForm from "./components/Registro";
 import Footer from "./components/Footer";
