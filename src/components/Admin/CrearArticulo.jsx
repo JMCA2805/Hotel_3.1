@@ -33,6 +33,8 @@ function CrearArticulo() {
       texto,
     };
 
+    console.log(imagen)
+
     try {
       const response = await axios.post(`${API}`, formData, {
         headers: {
