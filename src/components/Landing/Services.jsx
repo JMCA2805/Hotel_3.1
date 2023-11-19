@@ -1,17 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FaHotel, FaUtensils } from "react-icons/fa";
-import {
-  FaBroom,
-  FaMasksTheater,
-  FaMattressPillow,
-  FaWifi,
-} from "react-icons/fa6";
 
 const API = import.meta.env.VITE_GETSER_URL;
 
 export default function Services() {
-  const [servicios, setServicios] = useState([{ "": "" }]);
+  const [servicios, setServicios] = useState("");
   useEffect(() => {
     // Lógica para obtener los datos de los reservas desde el backend
     axios
@@ -37,22 +30,24 @@ export default function Services() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-          {servicios.map((servicio, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-                <img
-                  src={servicio.imagen}
-                  className="w-6 h-6 text-primary-600 lg:w-8 lg:h-8 dark:text-primary-300"
-                />
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                {servicio.servicio}
-              </h3>
-              <p className="text-white dark:text-gray-400">
-                {servicio.descripcion}
-              </p>
-            </div>
-          ))}
+          {servicios != ""
+            ? servicios.map((servicio, index) => (
+                <div key={index} className="flex flex-col items-center">
+                  <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                    <img
+                      src={servicio.imagen}
+                      className="w-6 h-6 text-primary-600 lg:w-8 lg:h-8 dark:text-primary-300"
+                    />
+                  </div>
+                  <h3 className="mb-2 text-xl font-bold dark:text-white">
+                    {servicio.servicio}
+                  </h3>
+                  <p className="text-white dark:text-gray-400">
+                    {servicio.descripcion}
+                  </p>
+                </div>
+              ))
+            : null}
         </div>
       </div>
     </section>
