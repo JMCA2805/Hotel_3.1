@@ -22,6 +22,7 @@ import CrearArticulo from "./components/Admin/CrearArticulo";
 import CrearServicio from "./components/Admin/ServicesAdd";
 import TablaArt from "./components/Admin/TablaArt";
 import Habitacion from "./components/Habitaciones/Habitacion";
+import CrearHabitacion from "./components/Admin/CrearHabitacion";
 
 function App() {
   return (
@@ -54,6 +55,12 @@ function App() {
                       <TablaArt />
                       <CrearArticulo />
                       <CrearServicio />
+=======
+                      <TablaArt/>
+
+                      <CrearArticulo/>
+                      <CrearHabitacion/>
+>>>>>>> Stashed changes
                     </AnimatedPage>
                   }
                 />
