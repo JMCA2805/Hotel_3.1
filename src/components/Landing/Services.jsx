@@ -1,4 +1,5 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { FaHotel, FaUtensils } from "react-icons/fa";
 import {
   FaBroom,
@@ -7,7 +8,21 @@ import {
   FaWifi,
 } from "react-icons/fa6";
 
+const API = import.meta.env.VITE_GETSER_URL;
+
 export default function Services() {
+  const [servicios, setServicios] = useState([{ "": "" }]);
+  useEffect(() => {
+    // Lógica para obtener los datos de los reservas desde el backend
+    axios
+      .get(API)
+      .then((response) => {
+        setServicios(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <section className="flex max-w h-full m-auto py-4 md:py-8 lg:py-16 font-poppins bg-Moradote dark:bg-MoradoO mx-4 my-4 text-white rounded-2xl dark:border dark:border-VerdeC">
       <div className="py-2 md:py-4 lg:py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
@@ -22,79 +37,22 @@ export default function Services() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaHotel className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
+          {servicios.map((servicio, index) => (
+            <div key={index} className="flex flex-col items-center">
+              <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
+                <img
+                  src={servicio.imagen}
+                  className="w-6 h-6 text-primary-600 lg:w-8 lg:h-8 dark:text-primary-300"
+                />
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">
+                {servicio.servicio}
+              </h3>
+              <p className="text-white dark:text-gray-400">
+                {servicio.descripcion}
+              </p>
             </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Habitaciones de Lujo
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Habitaciones elegantes y confortables con servicio de limpieza
-              diario y amenities de alta calidad.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaUtensils className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Restaurante gourmet
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Ofreciendo una exquisita selección de platos internacionales y
-              locales, con un ambiente refinado y servicio de primera clase.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaMattressPillow className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Spa y centro de bienestar
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Un lugar de relajación y rejuvenecimiento con tratamientos de
-              belleza, masajes y servicios de cuidado personal.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaMasksTheater className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Salón de Eventos y Banquetes
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Espacios elegantes para celebrar bodas, conferencias, reuniones de
-              negocios y otros eventos especiales.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaBroom className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Atención las 24 horas
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Atención personalizada para organizar excursiones, reservar
-              entradas a espectáculos, conseguir transporte y cualquier otra
-              necesidad que los huéspedes puedan tener.
-            </p>
-          </div>
-          <div className="flex flex-col items-center">
-            <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
-              <FaWifi className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300" />
-            </div>
-            <h3 className="mb-2 text-xl font-bold dark:text-white">
-              Wi-Fi e Internet Gratuito
-            </h3>
-            <p className="text-white dark:text-gray-400">
-              Conexión a internet de alta velocidad disponible en todo el hotel
-              para que los huéspedes puedan estar siempre conectados.
-            </p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
