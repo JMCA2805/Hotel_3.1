@@ -54,7 +54,7 @@ export default function AddReviews({ openModal, handleModalSet }) {
         {/* Modal Body */}
         <div className="bg-Moradote dark:bg-black w-full rounded-lg text-white font-poppins">
           {/* Modal Header */}
-          <div className="flex w-full h-20 items-center justify-center border-b dark:border-VerdeC/50 border-MoradoO ">
+          <div className="bg-MoradoO/80 rounded-t-lg dark:bg-black flex w-full h-20 items-center justify-center border-b dark:border-VerdeC/50 border-MoradoO ">
             <span className="text-xl font-bold">Añadir Reseña</span>
           </div>
           {/* Contenido */}
@@ -71,7 +71,7 @@ export default function AddReviews({ openModal, handleModalSet }) {
             />
           </div>
           {/* Modal Footer */}
-          <div className="flex bottom-0 w-full h-20 items-center border-t dark:border-VerdeC/50 border-MoradoO rounded-b-xl">
+          <div className="bg-MoradoO/80 rounded-b-lg dark:bg-black flex bottom-0 w-full h-20 items-center border-t dark:border-VerdeC/50 border-MoradoO">
             <div className="gap-8 flex justify-center w-full h-10">
               <button
                 onClick={Añadir}
@@ -83,8 +83,8 @@ export default function AddReviews({ openModal, handleModalSet }) {
               </button>
               <button
                 onClick={() => {
-                  handleModalSet;
                   setComentario("");
+                  handleModalSet();
                 }}
                 className="inline-block rounded-md bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-MoradoC dark:hover:bg-MoradoC focus-within:bg-MoradoO "
               >
