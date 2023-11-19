@@ -20,18 +20,17 @@ import AnimatedPage from "./components/AnimatedPage";
 import Profile from "./components/Profile";
 import CrearArticulo from "./components/Admin/CrearArticulo";
 import CrearServicio from "./components/Admin/ServicesAdd";
-import TablaArt from "./components/Admin/TablaArt"
+import TablaArt from "./components/Admin/TablaArt";
 import Habitacion from "./components/Habitaciones/Habitacion";
 
 function App() {
-
   return (
     <>
       <AuthProvider>
         <DarkModeGlobal>
           <BrowserRouter>
             <Header />
-            <Routes >
+            <Routes>
               <Route
                 path="/"
                 element={
@@ -45,19 +44,15 @@ function App() {
                 }
               />
 
-              <Route
-                element={
-                  <ProtectedRoute allowedRoles={["admin"]} />
-                }
-              >
+              <Route element={<ProtectedRoute allowedRoles={["admin"]} />}>
                 <Route
                   path="/Admin"
                   element={
                     <AnimatedPage>
                       <TablaR />
                       <UserTable />
-                      <TablaArt/>
-                      <CrearArticulo/>
+                      <TablaArt />
+                      <CrearArticulo />
                       <CrearServicio />
                     </AnimatedPage>
                   }
@@ -65,9 +60,7 @@ function App() {
               </Route>
 
               <Route
-                element={
-                  <ProtectedRoute allowedRoles={["admin", "usuario"]} />
-                }
+                element={<ProtectedRoute allowedRoles={["admin", "usuario"]} />}
               >
                 <Route
                   path="/Reserva"
@@ -78,7 +71,7 @@ function App() {
                     </AnimatedPage>
                   }
                 />
-                  <Route
+                <Route
                   path="/Profile"
                   element={
                     <AnimatedPage>
@@ -113,7 +106,7 @@ function App() {
                 }
               />
 
-<Route
+              <Route
                 path="/Habitacion"
                 element={
                   <AnimatedPage>
@@ -121,7 +114,6 @@ function App() {
                   </AnimatedPage>
                 }
               />
-
             </Routes>
             <Footer />
           </BrowserRouter>
