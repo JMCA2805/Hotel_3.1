@@ -4,6 +4,8 @@ import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_GETRESERVAS_URL;
 const APIEDIT = import.meta.env.VITE_EDITR_URL;
+const APIDELETE = import.meta.env.VITE_DELETERES_URL;
+
 
 const TablaR = () => {
   const [reservas, setReservas] = useState([]);
@@ -48,13 +50,13 @@ const TablaR = () => {
         datosActualizados,
       })
       .then((response) => {
-        const reservasActualizadas = reservas.map((reserva) => {
+        const datosActualizados = reservas.map((reserva) => {
           if (reserva._id === reservaSeleccionada._id) {
             return { ...reserva, ...datosActualizados };
           }
           return reserva;
         });
-        setReservas(reservasActualizadas);
+        setReservas(datosActualizados);
 
         setReservaSeleccionada(null);
         setDatosActualizados({});
@@ -77,6 +79,51 @@ const TablaR = () => {
           text: "Ocurrió un error al actualizar los datos del reserva. Por favor, inténtalo nuevamente.",
         });
       });
+  };
+
+  const eliminarReserva = (id) => {
+    // Mostrar confirmación con SweetAlert
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará la reserva. ¿Deseas continuar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(APIDELETE, { data: { id: id } })
+          .then((response) => {
+            // Filtra las reservas y excluye la reserva eliminada
+            const datosActualizados = reservas.filter(
+              (reserva) => reserva._id !== id
+            );
+            setReservas(datosActualizados);
+  
+            // Mensaje de confirmación
+            Swal.fire({
+              icon: "success",
+              title: "Reserva eliminada",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.error("Error al eliminar la reserva:", error);
+  
+            // Mensaje de error
+            Swal.fire({
+              icon: "error",
+              title: "Error al eliminar la reserva",
+              text:
+                "Ocurrió un error al eliminar la reserva. Por favor, inténtalo nuevamente.",
+            });
+          });
+      }
+    });
   };
 
   return (
@@ -201,6 +248,13 @@ const TablaR = () => {
                               }}
                             >
                               Editar
+                            </button>
+                            <button
+                              className="text-white px-4 py-2 rounded-lg mr-2 bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO"
+                              onClick={() => eliminarReserva(reserva)}
+
+                            >
+                              Borrar
                             </button>
                             {/* Otros botones de acción */}
                           </div>

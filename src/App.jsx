@@ -18,6 +18,7 @@ import TablaR from "./components/Admin/TablaR";
 import UserTable from "./components/Admin/TablaUsers";
 import AnimatedPage from "./components/AnimatedPage";
 import Profile from "./components/Profile";
+import CrearArticulo from "./components/Admin/CrearArticulo";
 
 function App() {
 
@@ -52,6 +53,7 @@ function App() {
                     <AnimatedPage>
                       <TablaR />
                       <UserTable />
+                      <CrearArticulo/>
                     </AnimatedPage>
                   }
                 />

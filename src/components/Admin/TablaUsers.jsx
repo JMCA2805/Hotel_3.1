@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_USERS_URL;
 const APIEDIT = import.meta.env.VITE_EDIT_URL;
+const APIDELETE = import.meta.env.VITE_ELIMINARUSUARIO_URL
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -70,6 +71,53 @@ const UserTable = () => {
         });
       });
   };
+
+  const eliminarUsuario = (correo) => {
+    // Mostrar confirmación con SweetAlert
+    Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará al usuario. ¿Deseas continuar?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log(correo);
+        axios
+          .delete(APIDELETE, { data: { correo: correo } })
+          .then((response) => {
+            // Filtra los usuarios y excluye al usuario eliminado
+            const usuariosActualizados = users.filter(
+              (usuario) => usuario.correo !== correo
+            );
+            setUsers(usuariosActualizados);
+  
+            // Mensaje de confirmación
+            Swal.fire({
+              icon: "success",
+              title: "Usuario eliminado",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          })
+          .catch((error) => {
+            console.error("Error al eliminar el usuario:", error);
+  
+            // Mensaje de error
+            Swal.fire({
+              icon: "error",
+              title: "Error al eliminar el usuario",
+              text:
+                "Ocurrió un error al eliminar el usuario. Por favor, inténtalo nuevamente.",
+            });
+          });
+      }
+    });
+  };
+
 
   return (
     <div className="font-[Barlow] mb-8">
@@ -153,6 +201,14 @@ const UserTable = () => {
                               onClick={() => editarUsuario(usuario)}
                             >
                               Editar
+                            </button>
+
+                            <button
+                              className="text-white px-4 py-2 rounded-lg mr-2 bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO"
+                              onClick={() => eliminarUsuario(usuario.correo)}
+
+                            >
+                              Borrar
                             </button>
                             {/* Otros botones de acción */}
                           </div>
