@@ -19,7 +19,7 @@ import UserTable from "./components/Admin/TablaUsers";
 import AnimatedPage from "./components/AnimatedPage";
 import Profile from "./components/Profile";
 import CrearArticulo from "./components/Admin/CrearArticulo";
-import CrearServicio from "./components/Admin/ServicesAdd";
+import CrearHabitacion from "./components/Admin/CrearHabitacion";
 import TablaArt from "./components/Admin/TablaArt";
 import Habitacion from "./components/Habitaciones/Habitacion";
 
@@ -53,7 +53,7 @@ function App() {
                       <UserTable />
                       <TablaArt />
                       <CrearArticulo />
-                      <CrearServicio />
+                      <CrearHabitacion />
                     </AnimatedPage>
                   }
                 />
