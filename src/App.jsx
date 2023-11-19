@@ -52,6 +52,7 @@ function App() {
                     <AnimatedPage>
                       <TablaR />
                       <UserTable />
+<<<<<<< Updated upstream
                       <TablaArt />
                       <CrearArticulo />
                       <CrearServicio />
