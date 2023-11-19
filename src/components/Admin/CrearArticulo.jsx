@@ -77,7 +77,7 @@ function CrearArticulo() {
     <div className="flex justify-center items-center my-8 md:px-4 lg:px-8 m-auto py-0 md:py-16 font-poppins bg-Moradote/50 dark:bg-MoradoO/50 mx-4 rounded-2xl gap-8 md:gap-0 dark:border border-MoradoO dark:border-VerdeC/50">
         <div className="max-w-md w-full space-y-8 bg-Moradote p-8 rounded-lg shadow-lg dark:bg-MoradoO border-MoradoO dark:border-VerdeC dark:border text-white">
           <div>
-            <h1 className="text-center text-3xl font-semibold tracking-tight text-gray-900">Agregar Articulo</h1>
+            <h1 className="text-center text-3xl font-semibold tracking-tight text-white dark:text-white">Agregar Articulo</h1>
           </div>
           <form className="mt-8 space-y-6 flex flex-col" onSubmit={handleSubmit} encType="multipart/form-data">
 
@@ -86,7 +86,7 @@ function CrearArticulo() {
               <input
                 type="text"
                 value={titulo}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg text-black"
                 onChange={(e) => setTitulo(e.target.value)}
               />
             </label>
@@ -95,14 +95,14 @@ function CrearArticulo() {
               <input
                 type="text"
                 value={texto}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg text-black"
                 onChange={(e) => setTexto(e.target.value)}
               />
             </label>
             <label>
               Foto del Articulo:
               <input
-                className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+                className="block w-full text-sm text-VerdeO border border-gray-300 rounded-lg cursor-pointer bg-VerdeO dark:text-white focus:outline-none dark:bg-VerdeO dark:border-gray-VerdeO dark:placeholder-VerdeO"
                 id="file_input"
                 type="file"
                 onChange={(e) => {
@@ -114,8 +114,8 @@ function CrearArticulo() {
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-verdeo hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
+                className="py-2 px-4 rounded-md w-full col-span-2  border-b-4 dark:border-VerdeC border-MoradoO hover:bg-MoradoO/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO text-white bg-MoradoO/30 dark:bg-Moradote"
+                >
                 Agregar Articulo
               </button>
             </div>
