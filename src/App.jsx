@@ -20,6 +20,8 @@ import AnimatedPage from "./components/AnimatedPage";
 import Profile from "./components/Profile";
 import CrearArticulo from "./components/Admin/CrearArticulo";
 import CrearServicio from "./components/Admin/ServicesAdd";
+import TablaArt from "./components/Admin/TablaArt"
+import Habitacion from "./components/Habitaciones/Habitacion";
 
 function App() {
 
@@ -54,6 +56,7 @@ function App() {
                     <AnimatedPage>
                       <TablaR />
                       <UserTable />
+                      <TablaArt/>
                       <CrearArticulo/>
                       <CrearServicio />
                     </AnimatedPage>
@@ -106,6 +109,15 @@ function App() {
                 element={
                   <AnimatedPage>
                     <Blog />
+                  </AnimatedPage>
+                }
+              />
+
+<Route
+                path="/Habitacion"
+                element={
+                  <AnimatedPage>
+                    <Habitacion />
                   </AnimatedPage>
                 }
               />

@@ -94,10 +94,11 @@ const TablaR = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
+        console.log(id);
         axios
           .delete(APIDELETE, { data: { id: id } })
           .then((response) => {
-            // Filtra las reservas y excluye la reserva eliminada
+            // Filtra los Reservas y excluye la reserva eliminada
             const datosActualizados = reservas.filter(
               (reserva) => reserva._id !== id
             );
@@ -106,25 +107,26 @@ const TablaR = () => {
             // Mensaje de confirmación
             Swal.fire({
               icon: "success",
-              title: "Reserva eliminada",
+              title: "reserva eliminada",
               showConfirmButton: false,
               timer: 1500,
             });
           })
           .catch((error) => {
-            console.error("Error al eliminar la reserva:", error);
+            console.error("Error al eliminar el reserva:", error);
   
             // Mensaje de error
             Swal.fire({
               icon: "error",
-              title: "Error al eliminar la reserva",
+              title: "Error al eliminar el reserva",
               text:
-                "Ocurrió un error al eliminar la reserva. Por favor, inténtalo nuevamente.",
+                "Ocurrió un error al eliminar el reserva. Por favor, inténtalo nuevamente.",
             });
           });
       }
     });
   };
+
 
   return (
     <div className="font-[Barlow] mb-8">

@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_USERS_URL;
 const APIEDIT = import.meta.env.VITE_EDIT_URL;
-const APIDELETE = import.meta.env.VITE_ELIMINARUSUARIO_URL
+const APIDELETE = import.meta.env.VITE_ELIMINARUSUARIO_URL;
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
@@ -94,7 +94,7 @@ const UserTable = () => {
               (usuario) => usuario.correo !== correo
             );
             setUsers(usuariosActualizados);
-  
+
             // Mensaje de confirmación
             Swal.fire({
               icon: "success",
@@ -105,19 +105,17 @@ const UserTable = () => {
           })
           .catch((error) => {
             console.error("Error al eliminar el usuario:", error);
-  
+
             // Mensaje de error
             Swal.fire({
               icon: "error",
               title: "Error al eliminar el usuario",
-              text:
-                "Ocurrió un error al eliminar el usuario. Por favor, inténtalo nuevamente.",
+              text: "Ocurrió un error al eliminar el usuario. Por favor, inténtalo nuevamente.",
             });
           });
       }
     });
   };
-
 
   return (
     <div className="font-[Barlow] mb-8">
@@ -206,7 +204,6 @@ const UserTable = () => {
                             <button
                               className="text-white px-4 py-2 rounded-lg mr-2 bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-Moradote/50 dark:hover:bg-MoradoC/70 focus-within:bg-MoradoO"
                               onClick={() => eliminarUsuario(usuario.correo)}
-
                             >
                               Borrar
                             </button>
