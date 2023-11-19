@@ -7,8 +7,9 @@ const API = import.meta.env.VITE_ADDHAB_URL;
 function CrearHabitacion() {
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
-  const [tarifa, setTarifa] = useState('');
+  const [tarifa, setTarifa] = useState(0);
   const [comodidades, setComodidades] = useState(['']);
+  const [candidadMax, setCantidadMax] = useState(0);
   const [imagen, setImagen] = useState('');
   const [respuesta, setRespuesta] = useState('');
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
@@ -22,10 +23,10 @@ function CrearHabitacion() {
     formData.append('comodidades', JSON.stringify(comodidades));
     formData.append('imagen', imagen);
     formData.append('tarifa', tarifa);
-
+    formData.append('cantidad', candidadMax);
 
     // Verificar que los campos obligatorios no estén vacíos
-    if ( !nombre || !descripcion || !imagen || !tarifa || !comodidades) {
+    if ( !nombre || !descripcion || !imagen || !tarifa || !comodidades || !candidadMax ) {
       setRespuesta('Por favor, completa todos los campos.');
       setMostrarMensaje(true);
       return;
@@ -48,6 +49,7 @@ function CrearHabitacion() {
       setNombre('');
       setDescripcion('');
       setTarifa('');
+      setCantidadMax('')
       setComodidades(['']);
       setImagen('');
 
@@ -158,6 +160,18 @@ function CrearHabitacion() {
                 value={tarifa}
                 className="w-full rounded-lg text-black"
                 onChange={(e) => setTarifa(e.target.value)}
+                min="1"
+              />
+            </label>
+
+            <label>
+              Máximo de personas:
+              <input
+                type="number"
+                value={candidadMax}
+                className="w-full rounded-lg text-black"
+                onChange={(e) => setCantidadMax(e.target.value)}
+                min="1"
               />
             </label>
 

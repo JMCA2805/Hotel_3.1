@@ -1,11 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 
 const API = import.meta.env.VITE_RESERVATION_URL;
-
+const API2 = import.meta.env.VITE_GETHAB_URL;
 const ReservationForm = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -14,10 +14,33 @@ const ReservationForm = () => {
   const [telefono, setTelefono] = useState("");
   const [fechaEntrada, setFechaEntrada] = useState("");
   const [fechaSalida, setFechaSalida] = useState("");
-  const [nPersonas, setNPersonas] = useState("");
+  const [nPersonas, setNPersonas] = useState(0);
   const [tHabitacion, setTHabitacion] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const [habitaciones, setHabitaciones] = useState([]);
+
+  const fetchHabitaciones = async () => {
+    try {
+      const response = await axios.get(`${API2}`);
+      const habitaciones = response.data;
+
+      return habitaciones;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    const fetchHabitacionesData = async () => {
+      const habitacionesData = await fetchHabitaciones();
+      setHabitaciones(habitacionesData);
+    };
+
+    fetchHabitacionesData();
+  }, []);
+
 
   const { user } = useContext(AuthContext); // Access the user's id from the user context
 
@@ -174,34 +197,41 @@ const ReservationForm = () => {
             />
           </div>
           <div className="mb-4">
+            <label className="block font-medium mb-2" htmlFor="tHabitacion">
+              Tipo de habitación
+            </label>
+              <select
+                className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
+                id="tHabitacion"
+                value={tHabitacion}
+                onChange={(e) => setTHabitacion(e.target.value)}
+                required
+              >
+                <option value="">Seleccionar tipo</option>
+                {habitaciones.map((habitacion) => (
+                  <option value={habitacion.nombre} key={habitacion.id}>
+                    {habitacion.nombre}
+                  </option>
+                ))}
+              </select>
+          </div>
+
+          <div className="mb-4">
             <label className="block font-medium mb-2" htmlFor="nPersonas">
               Número de personas
             </label>
             <input
-              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
+              className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
               type="number"
               id="nPersonas"
               value={nPersonas}
               onChange={(e) => setNPersonas(e.target.value)}
+              min="1"
+              max={habitaciones.find(
+                (habitacion) => habitacion.nombre === tHabitacion
+              )?.cantidad}
               required
             />
-          </div>
-          <div className="mb-4">
-            <label className="block font-medium mb-2" htmlFor="tHabitacion">
-              Tipo de habitación
-            </label>
-            <select
-              className="w-full p-2 border border-verdeo rounded-md  bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO  border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
-              id="tHabitacion"
-              value={tHabitacion}
-              onChange={(e) => setTHabitacion(e.target.value)}
-              required
-            >
-              <option value="">Seleccionar tipo</option>
-              <option value="normal">Normal</option>
-              <option value="vip">VIP</option>
-              <option value="presidencial">Presidencial</option>
-            </select>
           </div>
           {error && (
             <div className="text-red-500 text-sm mb-4 col-span-2">{error}</div>
