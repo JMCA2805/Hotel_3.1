@@ -23,6 +23,7 @@ import CrearHabitacion from "./components/Admin/CrearHabitacion";
 import TablaArt from "./components/Admin/TablaArt";
 import ServicesAdd from "./components/Admin/ServicesAdd";
 import Habitacion from "./components/Habitaciones/Habitacion";
+import TablaSer from "./components/Admin/TablaSer";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
                       <UserTable />
                       <TablaArt />
                       <CrearArticulo />
+                      <TablaSer />
                       <ServicesAdd />
                       <CrearHabitacion />
                     </AnimatedPage>
