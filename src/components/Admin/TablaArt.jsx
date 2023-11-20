@@ -4,11 +4,14 @@ import Swal from "sweetalert2";
 
 const API = import.meta.env.VITE_GETART_URL;
 const APIDELETE = import.meta.env.VITE_DELETEART_URL
+const APIEDIT = import.meta.env.VITE_EDITART_URL
 
 const ArticuloTable = () => {
   const [articulos, setArticulos] = useState([]);
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
   const [datosActualizados, setDatosActualizados] = useState({});
+  const [imagen, setImagen] = useState('');
+
 
   useEffect(() => {
     axios
@@ -23,15 +26,64 @@ const ArticuloTable = () => {
       });
   }, []);
   
-  const editarArticulo = (articulo) => {
-    setArticuloSeleccionado(articulo);
-  };
-
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setDatosActualizados({ ...datosActualizados, [name]: value });
   };
+
+  const editarArticulo = (articulo) => {
+    setArticuloSeleccionado(articulo);
+    setDatosActualizados({ ...articulo });
+  };
+
+  const actualizarArticulo = (event) => {
+    event.preventDefault(); // Evita que la página se reinicie por defecto
+
+    const formData = new FormData();
+    formData.append("titulo", articuloSeleccionado.titulo);
+    formData.append("texto", datosActualizados.texto);
+    formData.append("imagen", imagen);
+
+    console.log(datosActualizados.titulo)
+    console.log(datosActualizados.texto)
+    console.log(imagen)
+
+
+    axios
+    .put(APIEDIT, formData)
+      .then((response) => {
+        const articulosActualizados = articulos.map((articulo) => {
+          if (articulo.titulo === articuloSeleccionado.titulo) {
+            return { ...articulo, ...datosActualizados };
+          }
+          return articulo;
+        });
+        setArticulos(articulosActualizados);
+
+        setArticuloSeleccionado(null);
+        setDatosActualizados({});
+
+        // Mensaje de confirmación
+        Swal.fire({
+          icon: "success",
+          title: "articulo actualizado",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el articulo:", error);
+
+        // Mensaje de error
+        Swal.fire({
+          icon: "error",
+          title: "Error al actualizar el articulo",
+          text: "Ocurrió un error al actualizar los datos del articulo. Por favor, inténtalo nuevamente.",
+        });
+      });
+  };
+  
 
   const eliminarArticulo = (titulo) => {
     // Mostrar confirmación con SweetAlert
@@ -178,17 +230,18 @@ const ArticuloTable = () => {
               />
             </div>
             <div className="mb-4">
-              <label htmlFor="imagen" className="block text-xl font-bold mb-2">
-                Imagen:
-              </label>
+            <label>
+              Foto del Articulo:
               <input
-                type="text"
-                id="imagen"
+                className="block w-full text-sm text-VerdeO border border-gray-300 rounded-lg cursor-pointer bg-VerdeO dark:text-white focus:outline-none dark:bg-VerdeO dark:border-gray-VerdeO dark:placeholder-VerdeO"
+                id="file_input"
+                type="file"
+                onChange={(e) => {
+                  setImagen(e.target.files[0]);
+                }}
                 name="imagen"
-                value={articuloSeleccionado.imagen}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 rounded-lg bg-MoradoO dark:bg-MoradoC border border-MoradoO dark:border-VerdeC focus:outline-none focus:border-VerdeC"
               />
+            </label>
             </div>
             <div className="flex justify-center">
               <button
