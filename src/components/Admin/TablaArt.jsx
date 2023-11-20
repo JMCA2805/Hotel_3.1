@@ -52,13 +52,17 @@ const ArticuloTable = () => {
 
     axios
     .put(APIEDIT, formData)
-      .then((response) => {
-        const articulosActualizados = articulos.map((articulo) => {
-          if (articulo.titulo === articuloSeleccionado.titulo) {
-            return { ...articulo, ...datosActualizados };
-          }
-          return articulo;
-        });
+    .then((response) => {
+      // Obtener la URL de la imagen actualizada del cuerpo de la respuesta
+      const imagenActualizada = response.data.imagen;
+    
+      const articulosActualizados = articulos.map((articulo) => {
+        if (articulo.titulo === articuloSeleccionado.titulo) {
+          // Actualizar solo la propiedad 'imagen' del artículo seleccionado
+          return { ...articulo, imagen: imagenActualizada };
+        }
+        return articulo;
+      });
         setArticulos(articulosActualizados);
 
         setArticuloSeleccionado(null);
@@ -200,49 +204,49 @@ const ArticuloTable = () => {
         </div>
       )}
       {articuloSeleccionado && (
-        <div className="bg-MoradoC dark:bg-MoradoO rounded-lg p-4 mx-4 sm:mx-28 mb-8 border dark:border-VerdeC border-MoradoO">
-          <h2 className="text-white text-3xl font-bold text-center">Editar Artículo</h2>
-          <form className="mt-4 text-white">
-            <div className="mb-4">
-              <label htmlFor="titulo" className="block text-xl font-bold mb-2">
-                Título:
-              </label>
-              <input
-                type="text"
-                id="titulo"
-                name="titulo"
-                value={articuloSeleccionado.titulo}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 rounded-lg bg-MoradoO dark:bg-MoradoC border border-MoradoO dark:border-VerdeC focus:outline-none focus:border-VerdeC"
-              />
-            </div>
-            <div className="mb-4">
-              <label htmlFor="Texto" className="block text-xl font-bold mb-2">
-                Texto:
-              </label>
-              <input
-                type="text"
-                id="texto"
-                name="texto"
-                value={articuloSeleccionado.texto}
-                onChange={handleInputChange}
-                className="w-full px-3 py-2 rounded-lg bg-MoradoO dark:bg-MoradoC border border-MoradoO dark:border-VerdeC focus:outline-none focus:border-VerdeC"
-              />
-            </div>
-            <div className="mb-4">
-            <label>
-              Foto del Articulo:
-              <input
-                className="block w-full text-sm text-VerdeO border border-gray-300 rounded-lg cursor-pointer bg-VerdeO dark:text-white focus:outline-none dark:bg-VerdeO dark:border-gray-VerdeO dark:placeholder-VerdeO"
-                id="file_input"
-                type="file"
-                onChange={(e) => {
-                  setImagen(e.target.files[0]);
-                }}
-                name="imagen"
-              />
-            </label>
-            </div>
+       <div className="bg-MoradoC dark:bg-MoradoO rounded-lg p-4 mx-4 sm:mx-28 mb-8 border dark:border-VerdeC border-MoradoO">
+       <h2 className="text-white text-3xl font-bold text-center">Editar Artículo</h2>
+       <form className="mt-4 text-white">
+         <div className="mb-4">
+           <label htmlFor="titulo" className="block text-xl font-bold mb-2">
+             Título:
+           </label>
+           <input
+             type="text"
+             id="titulo"
+             name="titulo"
+             value={datosActualizados.titulo || ""}
+             onChange={handleInputChange}
+             className="w-full px-3 py-2 rounded-lg bg-MoradoO dark:bg-MoradoC border border-MoradoO dark:border-VerdeC focus:outline-none focus:border-VerdeC"
+           />
+         </div>
+         <div className="mb-4">
+           <label htmlFor="Texto" className="block text-xl font-bold mb-2">
+             Texto:
+           </label>
+           <input
+             type="text"
+             id="texto"
+             name="texto"
+             value={datosActualizados.texto || ""}
+             onChange={handleInputChange}
+             className="w-full px-3 py-2 rounded-lg bg-MoradoO dark:bg-MoradoC border border-MoradoO dark:border-VerdeC focus:outline-none focus:border-VerdeC"
+           />
+         </div>
+         <div className="mb-4">
+           <label>
+             Foto del Articulo:
+             <input
+               className="block w-full text-sm text-VerdeO border border-gray-300 rounded-lg cursor-pointer bg-VerdeO dark:text-white focus:outline-none dark:bg-VerdeO dark:border-gray-VerdeO dark:placeholder-VerdeO"
+               id="file_input"
+               type="file"
+               onChange={(e) => {
+                 setImagen(e.target.files[0]);
+               }}
+               name="imagen"
+             />
+           </label>
+         </div>
             <div className="flex justify-center">
               <button
                 type="button"

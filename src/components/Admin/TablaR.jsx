@@ -5,15 +5,42 @@ import Swal from "sweetalert2";
 const API = import.meta.env.VITE_GETRESERVAS_URL;
 const APIEDIT = import.meta.env.VITE_EDITR_URL;
 const APIDELETE = import.meta.env.VITE_DELETERES_URL;
-
+const API2 = import.meta.env.VITE_GETHAB_URL;
 
 const TablaR = () => {
   const [reservas, setReservas] = useState([]);
   const [reservaSeleccionada, setReservaSeleccionada] = useState(null);
   const [datosActualizados, setDatosActualizados] = useState({});
+  const [habitaciones, setHabitaciones] = useState([]);
+  const [tHabitacion, setTHabitacion] = useState("");
+
 
   const [fechaI, setFechaI] = useState("");
   const [fechaF, setFechaF] = useState("");
+
+  const fetchHabitaciones = async () => {
+    try {
+      const response = await axios.get(`${API2}`);
+      const habitaciones = response.data;
+
+      return habitaciones;
+    } catch (error) {
+      console.error(error);
+      return [];
+    }
+  };
+
+  useEffect(() => {
+    const fetchHabitacionesData = async () => {
+      const habitacionesData = await fetchHabitaciones();
+      setHabitaciones(habitacionesData);
+    };
+
+    fetchHabitacionesData();
+  }, []);
+
+
+
 
   useEffect(() => {
     // Lógica para obtener los datos de los reservas desde el backend
@@ -50,13 +77,13 @@ const TablaR = () => {
         datosActualizados,
       })
       .then((response) => {
-        const datosActualizados = reservas.map((reserva) => {
+        const reservasActualizadas = reservas.map((reserva) => {
           if (reserva._id === reservaSeleccionada._id) {
             return { ...reserva, ...datosActualizados };
           }
           return reserva;
         });
-        setReservas(datosActualizados);
+        setReservas(reservasActualizadas);
 
         setReservaSeleccionada(null);
         setDatosActualizados({});
@@ -80,6 +107,7 @@ const TablaR = () => {
         });
       });
   };
+
 
   const eliminarReserva = (id) => {
     // Mostrar confirmación con SweetAlert
@@ -391,6 +419,10 @@ const TablaR = () => {
                   name="nPersonas"
                   value={datosActualizados.nPersonas || ""}
                   onChange={handleInputChange}
+                  min="1"
+                  max={habitaciones.find(
+                    (habitacion) => habitacion.nombre === tHabitacion
+                  )?.cantidad}
                   required
                 />
               </div>
@@ -405,13 +437,16 @@ const TablaR = () => {
                   value={datosActualizados.tHabitacion || ""}
                   onChange={handleInputChange}
                   required
-                >
-                  <option value="">Seleccionar tipo</option>
-                  <option value="normal">Normal</option>
-                  <option value="vip">VIP</option>
-                  <option value="presidencial">Presidencial</option>
-                </select>
-              </div>
+                  >
+<option value="">Seleccionar tipo</option>
+                {habitaciones.map((habitacion) => (
+                  <option value={habitacion.nombre} key={habitacion.id}>
+                    {habitacion.nombre}
+                  </option>
+                ))}
+              </select>
+          </div>
+
             </div>
             {/* Otros campos de reserva */}
             <div className="flex mt-4">
