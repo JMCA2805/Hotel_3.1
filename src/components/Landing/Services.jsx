@@ -1,16 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
+// Api del servidor backend
 const API = import.meta.env.VITE_GETSER_URL;
 
 export default function Services() {
-  const [servicios, setServicios] = useState("");
+  // Estados
+  const [servicios, setServicios] = useState([{"":""}]);
   useEffect(() => {
     // Lógica para obtener los datos de los reservas desde el backend
     axios
       .get(API)
       .then((response) => {
         setServicios(response.data);
+        console.log(response.data)
       })
       .catch((error) => {
         console.log(error);
@@ -30,6 +33,7 @@ export default function Services() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-12">
+          {/* Seccion que muestra y condiciona si mostrar o no os servicios */}
           {servicios != ""
             ? servicios.map((servicio, index) => (
                 <div key={index} className="flex flex-col items-center">

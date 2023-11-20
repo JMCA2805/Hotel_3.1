@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2"; // Importar SweetAlert2
 
+//Api de servidor backend
 const API = import.meta.env.VITE_ADDSER_URL;
 
 function CrearServicio() {
+  // Inicializacion de estados
   const [servicio, setServicio] = useState("");
   const [descripcion, setDesc] = useState("");
   const [icono, setIcono] = useState("");
@@ -12,9 +14,11 @@ function CrearServicio() {
 
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
 
+  // Funcion para cargar un nuevo servicio
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // datos a enviar
     const formData = new FormData();
     formData.append("servicio", servicio);
     formData.append("descripcion", descripcion);

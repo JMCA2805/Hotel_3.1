@@ -1,23 +1,30 @@
+// Importaciones
 import { Modal } from "flowbite-react";
 import { AuthContext } from "../../context/AuthProvider";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import axios from "axios";
 
+// Api del backend para la solicitud
 const API = import.meta.env.VITE_REVIEWS_URL;
 
+//Props
 export default function AddReviews({ openModal, handleModalSet }) {
+  // Inicializacion de estados
   const [comentario, setComentario] = useState("");
   const { user } = useContext(AuthContext);
 
+  // Funcion para añadir reseñas
   const Añadir = async (e) => {
     e.preventDefault();
 
     try {
+      // Solicitud al servidor 
       const response = await axios.post(API, {
         nombre: user.nombre,
         comentario: comentario,
       });
+      // Alertas
       Swal.fire({
         icon: "success",
         title: "Reseña Enviada",
@@ -45,11 +52,12 @@ export default function AddReviews({ openModal, handleModalSet }) {
 
   return (
     <>
+      {/* Modal para guardar reseñas */}
       <Modal
-        show={openModal}
-        onClose={handleModalSet}
-        position={"center"}
-        size={"md"}
+        show={openModal} //Abrir Modal
+        onClose={handleModalSet} //Cerrar Modal
+        position={"center"} //Posicion
+        size={"md"} //tamaño
       >
         {/* Modal Body */}
         <div className="bg-Moradote dark:bg-black w-full rounded-lg text-white font-poppins">

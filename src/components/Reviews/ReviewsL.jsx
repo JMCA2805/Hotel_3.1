@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 
 const API = import.meta.env.VITE_GETREVIEWS_URL;
 
+// Componente donde se renderiza las reseñas
 const ReviewCard = ({ cmntrs }) => {
   return (
     <div
@@ -21,8 +22,10 @@ const ReviewCard = ({ cmntrs }) => {
   );
 };
 
+// Componente que contiene las reseñas
 const ReviewsL = () => {
   const [comentarios, setComentarios] = useState([{ "": "" }]);
+
   useEffect(() => {
     // Lógica para obtener los datos de los reservas desde el backend
     axios
@@ -34,9 +37,11 @@ const ReviewsL = () => {
         console.log(error);
       });
   }, []);
+
   return (
     <div className="h-full w-full px-4">
       <div className="py-4 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3">
+        {/* Mapeo de la data obtenida del backend para crear las reseñas */}
         {comentarios.map((cmntrs, index) => (
           <ReviewCard key={index} cmntrs={cmntrs} />
         ))}
