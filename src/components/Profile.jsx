@@ -93,7 +93,7 @@ const UserProfile = () => {
             <div className="flex justify-between">
               <div className="flex items-center">
                 <img
-                  className="h-17 w-17 rounded-full border-2 border-white text-white"
+                  className="h-16 w-16 rounded-full border-2 border-white text-white"
                   src={userData?.imagen}
                   alt="Proximamente / En Desarrollo"
                 />
