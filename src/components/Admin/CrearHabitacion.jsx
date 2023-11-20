@@ -57,7 +57,7 @@ function CrearHabitacion() {
       // Mostrar mensaje de confirmación con SweetAlert2
       Swal.fire({
         icon: 'success',
-        title: 'Producto agregado',
+        title: 'Habitacion agregada',
         text: 'La Habitación se ha registrado exitosamente.',
       });
     } catch (error) {
