@@ -13,7 +13,6 @@ const RegisterForm = () => {
   const [contraseña, setContraseña] = useState("");
   const [confirmContraseña, setConfirmContraseña] = useState("");
   const [contraseñasMatch, setContraseñasMatch] = useState(true);
-  const [imagen, setImagen] = useState('');
   const [error, setError] = useState("");
   const { loggedIn } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -34,16 +33,6 @@ const RegisterForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const formData = new FormData();
-    formData.append('nombre', nombre);
-    formData.append('apellido', apellido);
-    formData.append('correo', correo);
-    formData.append('contraseña', contraseña);
-    formData.append('imagen', imagen); // Aquí se agrega la imagen al FormData
-
-    console.log(formData.get('contraseña'))
-
-
     // Verificar que los campos obligatorios no estén vacíos
     if (!nombre || !apellido || !correo || !contraseña || !confirmContraseña) {
       setError("Por favor, completa todos los campos.");
@@ -60,19 +49,10 @@ const RegisterForm = () => {
       apellido,
       correo,
       contraseña,
-      imagen,
     };
 
-    
-
     try {
-
-      const response = await axios.post(`${API}`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
-
+      const response = await axios.post(API, usuario);
 
       // Mostrar mensaje de confirmación con SweetAlert2
       Swal.fire({
@@ -149,7 +129,6 @@ const RegisterForm = () => {
             className="w-full p-2 border rounded-md  bg-MoradoO/30 border-MoradoO text-white placeholder:text-white/50 sm:text-sm focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
             type="password"
             id="contraseña"
-            name="contraseña"
             value={contraseña}
             onChange={(e) => setContraseña(e.target.value)}
             required
@@ -177,23 +156,10 @@ const RegisterForm = () => {
             }}
             required
           />
-             <label>
-              Foto del Articulo:
-              <input
-                className="block w-full text-sm text-VerdeO border border-gray-300 rounded-lg cursor-pointer bg-VerdeO dark:text-white focus:outline-none dark:bg-VerdeO dark:border-gray-VerdeO dark:placeholder-VerdeO"
-                id="file_input"
-                type="file"
-                onChange={(e) => {
-                  setImagen(e.target.files[0]);
-                }}
-                name="imagen"
-              />
-            </label>
           {!contraseñasMatch && (
             <p className="text-red-500 text-sm mt-1">
               Las contraseñas no coinciden.
             </p>
-
           )}
         </div>
         {error && <div className="text-red-500 text-sm mb-4">{error}</div>}

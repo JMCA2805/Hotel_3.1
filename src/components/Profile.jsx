@@ -3,6 +3,8 @@ import { AuthContext } from "../context/AuthProvider";
 import axios from "axios";
 
 const API = import.meta.env.VITE_USER_URL;
+const APIEDIT = import.meta.env.VITE_EDIT_URL;
+
 
 const UserProfile = () => {
   const { user } = useContext(AuthContext);
@@ -25,6 +27,46 @@ const UserProfile = () => {
   }, [user]);
 
   console.log(userData);
+
+  const actualizarUsuario = (event) => {
+    event.preventDefault(); // Evita que la página se reinicie por defecto
+
+    axios
+      .put(APIEDIT, {
+        correo ,
+        datosActualizados,
+      })
+      .then((response) => {
+        const usuariosActualizados = users.map((usuario) => {
+          if (usuario.correo === usuarioSeleccionado.correo) {
+            return { ...usuario, ...datosActualizados };
+          }
+          return usuario;
+        });
+        setUsers(usuariosActualizados);
+
+        setUsuarioSeleccionado(null);
+        setDatosActualizados({});
+
+        // Mensaje de confirmación
+        Swal.fire({
+          icon: "success",
+          title: "Usuario actualizado",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        console.error("Error al actualizar el usuario:", error);
+
+        // Mensaje de error
+        Swal.fire({
+          icon: "error",
+          title: "Error al actualizar el usuario",
+          text: "Ocurrió un error al actualizar los datos del usuario. Por favor, inténtalo nuevamente.",
+        });
+      });
+  };
 
   ///Esto estara proximamente integrado con nuestra Base de Datos de Usuarios, para detectar el token actual y compararlo con los usuarios para asi encontrar sus datos
   return (

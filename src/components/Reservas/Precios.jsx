@@ -41,6 +41,8 @@ const Precios = () => {
           console.error('Error al obtener las habitaciones:', error);
         }
       };
+
+      
   
       obtenerHabitaciones();
     }, []);
