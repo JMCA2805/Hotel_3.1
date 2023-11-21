@@ -41,23 +41,35 @@ const ArticuloTable = () => {
     event.preventDefault(); // Evita que la página se reinicie por defecto
 
     const formData = new FormData();
-    formData.append("titulo", articuloSeleccionado.titulo);
+    formData.append("titulo", datosActualizados.titulo);
+    formData.append("tituloviejo", articuloSeleccionado.titulo);
     formData.append("texto", datosActualizados.texto);
     formData.append("imagen", imagen);
 
+    console.log(formData.get("titulo"))
+    console.log(formData.get("titulo"))
+
+
     axios
-    .put(APIEDIT, formData)
-    .then((response) => {
-      // Obtener la URL de la imagen actualizada del cuerpo de la respuesta
-      const imagenActualizada = response.data.imagen;
-    
-      const articulosActualizados = articulos.map((articulo) => {
-        if (articulo.titulo === articuloSeleccionado.titulo) {
-          // Actualizar solo la propiedad 'imagen' del artículo seleccionado
-          return { ...articulo, imagen: imagenActualizada };
-        }
-        return articulo;
-      });
+      .put(APIEDIT, formData)
+      .then((response) => {
+        // Obtener la URL de la imagen actualizada del cuerpo de la respuesta
+
+        const imagenActualizada = response.data.imagen;
+
+        const articulosActualizados = articulos.map((articulo) => {
+          if (articulo.nombre === articuloSeleccionado.nombre) {
+            // Actualizar todos los datos de la habitación seleccionada
+            return {
+              ...articulo,
+              nombre: datosActualizados.titulo,
+              descripcion: datosActualizados.texto,
+              imagen: imagenActualizada,
+            };
+          }
+          return articulo;
+        });
+
         setArticulos(articulosActualizados);
 
         setArticuloSeleccionado(null);
@@ -66,7 +78,7 @@ const ArticuloTable = () => {
         // Mensaje de confirmación
         Swal.fire({
           icon: "success",
-          title: "articulo actualizado",
+          title: "Articulo actualizado",
           showConfirmButton: false,
           timer: 1500,
         });

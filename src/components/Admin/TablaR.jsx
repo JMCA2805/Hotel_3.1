@@ -127,10 +127,16 @@ const TablaR = () => {
           .delete(APIDELETE, { data: { id: id } })
           .then((response) => {
             // Filtra los Reservas y excluye la reserva eliminada
-            const datosActualizados = reservas.filter(
+            const reservasActualizadas = reservas.filter(
               (reserva) => reserva._id !== id
             );
-            setReservas(datosActualizados);
+
+            console.log(reservasActualizadas)
+            console.log(reservas)
+            setReservas(reservasActualizadas);
+            console.log(reservas)
+
+            setReservaSeleccionada(null);
   
             // Mensaje de confirmación
             Swal.fire({
@@ -154,7 +160,6 @@ const TablaR = () => {
       }
     });
   };
-
 
   return (
     <div className="font-[Barlow] mb-8">

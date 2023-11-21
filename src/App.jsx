@@ -57,8 +57,6 @@ function App() {
                       <TablaArt />
                       <TablaSer />
                       <TablaHab />
-
-
                       <CrearArticulo />
                       <ServicesAdd />
                       <CrearHabitacion />

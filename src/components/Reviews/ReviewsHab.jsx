@@ -70,7 +70,7 @@ const ReviewsHab = () => {
   return (
     <div className="h-full w-full px-4">
       <div className="w-full flex justify-center items-center text-xl font-poppins p-2">
-        
+
       <h1 className="text-white">Selecciona un tipo de habitación para ver sus comentarios</h1>
       </div>
       <select

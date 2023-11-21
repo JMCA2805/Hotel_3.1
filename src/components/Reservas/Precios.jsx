@@ -89,7 +89,6 @@ const Precios = () => {
           const response = await fetch(`${API}`);
           const data = await response.json();
           setHabitaciones(data);
-          console.log(data)
         } catch (error) {
           console.error('Error al obtener las habitaciones:', error);
         }
@@ -103,7 +102,6 @@ const Precios = () => {
         const response = await fetch(`${API}`);
         const data = await response.json();
         setHabitaciones(data);
-        console.log(data)
       } catch (error) {
         console.error('Error al obtener las habitaciones:', error);
       }
@@ -121,7 +119,6 @@ const Precios = () => {
         categoria: categoria,
         limite: limitePersonas
       };
-      console.log(buscar)
     
       try {
         const response = await axios.post(APIB, buscar);

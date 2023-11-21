@@ -1,6 +1,6 @@
 [{
   "_id": {
-    "$oid": "6555ca4dc7fe790c40cfbc5f"
+    "$oid": "655c8da7da11a9050be89047"
   },
   "idUsuario": "6555c9e8c7fe790c40cfbc57",
   "nombre": "Maikel",
@@ -9,18 +9,18 @@
   "cedula": "30302836",
   "telefono": "04247803921",
   "fechaEntrada": {
-    "$date": "2023-11-17T00:00:00.000Z"
+    "$date": "2023-11-23T00:00:00.000Z"
   },
   "fechaSalida": {
-    "$date": "2023-11-30T00:00:00.000Z"
+    "$date": "2023-11-24T00:00:00.000Z"
   },
-  "nPersonas": 3,
-  "tHabitacion": "vip",
+  "nPersonas": 2,
+  "tHabitacion": "Habitación VIP",
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "6555cab8c7fe790c40cfbc61"
+    "$oid": "655c8dc8da11a9050be89055"
   },
   "idUsuario": "6555c9e8c7fe790c40cfbc57",
   "nombre": "Luis",
@@ -32,9 +32,29 @@
     "$date": "2023-11-24T00:00:00.000Z"
   },
   "fechaSalida": {
+    "$date": "2023-11-28T00:00:00.000Z"
+  },
+  "nPersonas": 3,
+  "tHabitacion": "Habitación Normal",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655c8deeda11a9050be89063"
+  },
+  "idUsuario": "6555c9e8c7fe790c40cfbc57",
+  "nombre": "Admin",
+  "apellido": "Admin",
+  "correo": "admin@gmail.com",
+  "cedula": "29573625",
+  "telefono": "04247303925",
+  "fechaEntrada": {
+    "$date": "2023-11-28T00:00:00.000Z"
+  },
+  "fechaSalida": {
     "$date": "2023-11-30T00:00:00.000Z"
   },
-  "nPersonas": 4,
-  "tHabitacion": "presidencial",
+  "nPersonas": 10,
+  "tHabitacion": "Habitación Presidencial",
   "__v": 0
 }]
