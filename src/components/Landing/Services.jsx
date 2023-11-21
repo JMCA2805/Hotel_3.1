@@ -13,7 +13,6 @@ export default function Services() {
       .get(API)
       .then((response) => {
         setServicios(response.data);
-        console.log(response.data)
       })
       .catch((error) => {
         console.log(error);

@@ -85,7 +85,7 @@ const UserTable = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(correo);
+        
         axios
           .delete(APIDELETE, { data: { correo: correo } })
           .then((response) => {

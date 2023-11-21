@@ -14,7 +14,7 @@ const UserProfile = () => {
   const [respuesta, setRespuesta] = useState('');
   const [mostrarFormulario, setMostrarFormulario] = useState(false); 
   const fetchUserData = async () => {
-    console.log(user.id);
+    
     try {
       const response = await axios.get(`${API}/${user.id}`);
       setUserData(response.data);

@@ -45,11 +45,6 @@ const ArticuloTable = () => {
     formData.append("texto", datosActualizados.texto);
     formData.append("imagen", imagen);
 
-    console.log(datosActualizados.titulo)
-    console.log(datosActualizados.texto)
-    console.log(imagen)
-
-
     axios
     .put(APIEDIT, formData)
     .then((response) => {
@@ -102,7 +97,6 @@ const ArticuloTable = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(titulo);
         axios
           .delete(APIDELETE, { data: { titulo: titulo } })
           .then((response) => {

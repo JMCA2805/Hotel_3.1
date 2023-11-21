@@ -24,6 +24,7 @@ import TablaArt from "./components/Admin/TablaArt";
 import ServicesAdd from "./components/Admin/ServicesAdd";
 import Habitacion from "./components/Habitaciones/Habitacion";
 import TablaSer from "./components/Admin/TablaSer";
+import ReviewsHab from "./components/Reviews/ReviewsHab";
 
 function App() {
   return (
@@ -72,6 +73,7 @@ function App() {
                     <AnimatedPage>
                       <ReservasForm />
                       <Precios />
+                      <ReviewsHab />
                     </AnimatedPage>
                   }
                 />

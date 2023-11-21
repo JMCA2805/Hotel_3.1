@@ -122,7 +122,7 @@ const TablaR = () => {
       cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
-        console.log(id);
+        
         axios
           .delete(APIDELETE, { data: { id: id } })
           .then((response) => {

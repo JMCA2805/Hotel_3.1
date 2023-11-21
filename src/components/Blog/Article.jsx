@@ -24,8 +24,6 @@ export default function Article() {
       });
   }, []);
 
-  console.log(articulos)
-
   return (
     <>
       {articulos.map(articulo => (

@@ -78,8 +78,6 @@ function CrearHabitacion() {
   const handleComodidadChange = (index, valor) => {
     const nuevasComodidades = [...comodidades];
     nuevasComodidades[index] = valor;
-    console.log(nuevasComodidades)
-    console.log(comodidades + " 2")
     setComodidades(nuevasComodidades);
   };
   

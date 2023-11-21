@@ -11,7 +11,7 @@ const ReviewCard = ({ cmntrs }) => {
     >
       <img
         className="h-20 w-20 mx-auto mb-2 rounded-full border border-MoradoO dark:border-VerdeC"
-        src={"foto"}
+        src={"/usuario.png"}
         alt="Icono de Contacto"
       />
       <h3 className="text-lg font-bold mb-2">{cmntrs.nombre}</h3>
