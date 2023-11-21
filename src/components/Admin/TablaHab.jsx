@@ -145,7 +145,7 @@ const ArticuloTable = () => {
   return (
     <div className="font-[Barlow] mb-8">
       <div className="bg-MoradoC dark:bg-MoradoO rounded-lg p-4 mx-4 mt-4 sm:mx-28 mb-8 border dark:border-VerdeC border-MoradoO">
-        <h2 className="text-white text-3xl font-bold text-center">Lista de Artículos</h2>
+        <h2 className="text-white text-3xl font-bold text-center">Lista de Habitaciones</h2>
       </div>
       {habitaciones.length === 0 ? (
         <div className="flex w-full justify-center items-center text-white">

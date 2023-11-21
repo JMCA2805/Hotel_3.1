@@ -25,8 +25,12 @@ const HabitacionCard = ({
         {description}
       </p>
       <div className="flex justify-center items-baseline my-8">
-        <span className="mr-2 text-5xl font-extrabold">${tarifa}</span>
-        <span className="text-white/80 dark:text-gray-400">/dia</span>
+      <div className="max-w-xs text-center overflow-y-auto h-full break-all ">
+    <span className="mr-2 text-5xl font-extrabold overflow-hidden whitespace-nowrap">
+      ${tarifa}
+    </span>
+    <span className="text-white/80 dark:text-gray-400">/dia</span>
+  </div>
       </div>
       <ul role="list" className="mb-8 space-y-4 text-left">
         {comodidades.map((comodidad, index) => (
