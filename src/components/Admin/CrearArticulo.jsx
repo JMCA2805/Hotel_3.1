@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2'; // Importar SweetAlert2
 
@@ -9,9 +10,8 @@ function CrearArticulo() {
   const [texto, setTexto] = useState('');
   const [imagen, setImagen] = useState('');
   const [respuesta, setRespuesta] = useState('');
-
+  const navigate = useNavigate();
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -56,7 +56,10 @@ function CrearArticulo() {
         icon: 'success',
         title: 'Producto agregado',
         text: 'El producto se ha registrado exitosamente.',
-      });
+      })
+      navigate("/Blog");
+
+
     } catch (error) {
       console.error(error);
       setRespuesta('Ocurrió un error al agregar el producto');

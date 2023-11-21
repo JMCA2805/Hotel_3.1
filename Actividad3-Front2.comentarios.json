@@ -1,0 +1,60 @@
+[{
+  "_id": {
+    "$oid": "655c24ef97f3c60de1566304"
+  },
+  "tipo": "Hotel",
+  "nombre": "Juan Salvador",
+  "comentario": "Me alojé en el Hotel Aguila durante una semana y tuve una experiencia excelente. El hotel está ubicado en una zona céntrica de Coro, cerca de todo lo que necesitas. El personal es amable y servicial, y las habitaciones son limpias y cómodas. El desayuno es delicioso y abundante. Sin duda volvería a alojarme en este hotel.",
+  "fecha": {
+    "$date": "2023-11-21T03:30:50.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655c251197f3c60de1566306"
+  },
+  "tipo": "Hotel",
+  "nombre": "Maikel Villegas",
+  "comentario": "El Hotel Aguila es una buena opción para viajeros con un presupuesto limitado. Las habitaciones son limpias y cómodas, y el personal es amable. La ubicación es un poco alejada del centro de la ciudad, pero el autobús es gratuito. En general, estoy satisfecho con mi estancia",
+  "fecha": {
+    "$date": "2023-11-21T03:30:50.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655c252e97f3c60de1566308"
+  },
+  "tipo": "Hotel",
+  "nombre": "Jose Mauricio",
+  "comentario": "Me alojé en el Hotel Aguila durante un fin de semana para descansar y relajarme. El hotel es tranquilo y tranquilo, perfecto para descansar. Las habitaciones son cómodas y las camas son muy cómodas. El desayuno es delicioso y abundante. En general, tuve una experiencia maravillosa.",
+  "fecha": {
+    "$date": "2023-11-21T03:30:50.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655c254397f3c60de156630a"
+  },
+  "tipo": "Hotel",
+  "nombre": "Luis Monsalve",
+  "comentario": "El Hotel Aguila es una buena opción para viajeros que buscan una buena relación calidad-precio. Las habitaciones son limpias y cómodas, y el personal es amable. La ubicación es un poco alejada del centro de la ciudad, pero el autobús es gratuito. En general, estoy satisfecho con mi estancia.",
+  "fecha": {
+    "$date": "2023-11-21T03:30:50.680Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "655c257797f3c60de156630c"
+  },
+  "tipo": "Hotel",
+  "nombre": "Jesus Escalona",
+  "comentario": "En general, estoy satisfecho con mi estancia en el Hotel Aguila. Las habitaciones son amplias y bien equipadas, con todo lo que necesitas para una estancia cómoda. El baño es limpio y funcional. El personal es amable y servicial. El desayuno es delicioso y abundante.",
+  "fecha": {
+    "$date": "2023-11-21T03:30:50.680Z"
+  },
+  "__v": 0
+}]
