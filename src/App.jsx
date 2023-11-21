@@ -22,9 +22,9 @@ import CrearArticulo from "./components/Admin/CrearArticulo";
 import CrearHabitacion from "./components/Admin/CrearHabitacion";
 import TablaArt from "./components/Admin/TablaArt";
 import ServicesAdd from "./components/Admin/ServicesAdd";
-import Habitacion from "./components/Habitaciones/Habitacion";
 import TablaSer from "./components/Admin/TablaSer";
 import ReviewsHab from "./components/Reviews/ReviewsHab";
+import TablaHab from "./components/Admin/TablaHab"
 
 function App() {
   return (
@@ -55,8 +55,11 @@ function App() {
                       <TablaR />
                       <UserTable />
                       <TablaArt />
-                      <CrearArticulo />
                       <TablaSer />
+                      <TablaHab />
+
+
+                      <CrearArticulo />
                       <ServicesAdd />
                       <CrearHabitacion />
                     </AnimatedPage>
@@ -112,14 +115,6 @@ function App() {
                 }
               />
 
-              <Route
-                path="/Habitacion"
-                element={
-                  <AnimatedPage>
-                    <Habitacion />
-                  </AnimatedPage>
-                }
-              />
             </Routes>
             <Footer />
           </BrowserRouter>

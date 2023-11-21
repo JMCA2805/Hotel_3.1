@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2"; // Importar SweetAlert2
+
 
 //Api de servidor backend
 const API = import.meta.env.VITE_ADDSER_URL;
@@ -11,7 +13,7 @@ function CrearServicio() {
   const [descripcion, setDesc] = useState("");
   const [icono, setIcono] = useState("");
   const [respuesta, setRespuesta] = useState("");
-
+  const navigate = useNavigate();
   const [mostrarMensaje, setMostrarMensaje] = useState(false);
 
   // Funcion para cargar un nuevo servicio
@@ -57,18 +59,20 @@ function CrearServicio() {
       // Mostrar mensaje de confirmación con SweetAlert2
       Swal.fire({
         icon: "success",
-        title: "Producto agregado",
-        text: "El producto se ha registrado exitosamente.",
+        title: "Servicio agregado",
+        text: "El servicio se ha registrado exitosamente.",
       });
+      navigate("/");
+
     } catch (error) {
       console.error(error);
-      setRespuesta("Ocurrió un error al agregar el producto");
+      setRespuesta("Ocurrió un error al agregar el servicio");
 
       // Mostrar mensaje de error con SweetAlert2
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Ocurrió un error al agregar el producto.",
+        text: "Ocurrió un error al agregar el servicio.",
       }).then({});
     }
   };
