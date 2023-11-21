@@ -6,6 +6,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const API = import.meta.env.VITE_RESERVATION_URL;
 const API2 = import.meta.env.VITE_GETHAB_URL;
+
 const ReservationForm = () => {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
@@ -18,13 +19,12 @@ const ReservationForm = () => {
   const [tHabitacion, setTHabitacion] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const [habitaciones, setHabitaciones] = useState([]);
+  const [habitaciones, setHabitaciones] = useState("");
 
   const fetchHabitaciones = async () => {
     try {
       const response = await axios.get(`${API2}`);
       const habitaciones = response.data;
-
       return habitaciones;
     } catch (error) {
       console.error(error);
@@ -40,7 +40,6 @@ const ReservationForm = () => {
 
     fetchHabitacionesData();
   }, []);
-
 
   const { user } = useContext(AuthContext); // Access the user's id from the user context
 
@@ -200,20 +199,26 @@ const ReservationForm = () => {
             <label className="block font-medium mb-2" htmlFor="tHabitacion">
               Tipo de habitación
             </label>
-              <select
-                className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
-                id="tHabitacion"
-                value={tHabitacion}
-                onChange={(e) => setTHabitacion(e.target.value)}
-                required
-              >
-                <option value="">Seleccionar tipo</option>
-                {habitaciones.map((habitacion) => (
-                  <option value={habitacion.nombre} key={habitacion.id}>
-                    {habitacion.nombre}
-                  </option>
-                ))}
-              </select>
+            <select
+              className="w-full p-2 border border-verdeo rounded-md bg-MoradoO/30 focus:bg-MoradoO dark:bg-MoradoO border-MoradoO text-white placeholder:text-white/50 focus:border-2 focus:border-MoradoO focus:ring-0 dark:border-VerdeC/50 dark:focus:border-VerdeC"
+              id="tHabitacion"
+              value={tHabitacion}
+              onChange={(e) => setTHabitacion(e.target.value)}
+              required
+            >
+              {typeof habitaciones == "string" ? (
+                <option value={habitaciones}></option>
+              ) : (
+                <>
+                  <option value="">Seleccionar tipo</option>
+                  {habitaciones.map((habitacion, index) => (
+                    <option value={habitacion.nombre} key={index}>
+                      {habitacion.nombre}
+                    </option>
+                  ))}
+                </>
+              )}
+            </select>
           </div>
 
           <div className="mb-4">
@@ -227,9 +232,13 @@ const ReservationForm = () => {
               value={nPersonas}
               onChange={(e) => setNPersonas(e.target.value)}
               min="1"
-              max={habitaciones.find(
-                (habitacion) => habitacion.nombre === tHabitacion
-              )?.cantidad}
+              max={
+                typeof habitaciones == "string"
+                  ? "1"
+                  : habitaciones.find(
+                      (habitacion) => habitacion.nombre === tHabitacion
+                    )?.cantidad
+              }
               required
             />
           </div>

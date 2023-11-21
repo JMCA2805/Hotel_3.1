@@ -9,7 +9,7 @@ import axios from "axios";
 const API = import.meta.env.VITE_REVIEWS_URL;
 
 //Props
-export default function AddReviews({ openModal, handleModalSet }) {
+export default function AddReviewsHab({ openModal2, handleModalSet2, tipo }) {
   // Inicializacion de estados
   const [comentario, setComentario] = useState("");
   const { user } = useContext(AuthContext);
@@ -21,7 +21,7 @@ export default function AddReviews({ openModal, handleModalSet }) {
     try {
       // Solicitud al servidor 
       const response = await axios.post(API, {
-        tipo: "Hotel",
+        tipo: tipo,
         nombre: user.nombre,
         comentario: comentario,
       });
@@ -33,10 +33,10 @@ export default function AddReviews({ openModal, handleModalSet }) {
         confirmButtonText: "Aceptar",
       }).then((result) => {
         if (result.isConfirmed) {
-          handleModalSet();
+          handleModalSet2();
           setComentario("");
         } else {
-          handleModalSet();
+          handleModalSet2();
           setComentario("");
         }
       });
@@ -55,8 +55,8 @@ export default function AddReviews({ openModal, handleModalSet }) {
     <>
       {/* Modal para guardar reseñas */}
       <Modal
-        show={openModal} //Abrir Modal
-        onClose={handleModalSet} //Cerrar Modal
+        show={openModal2} //Abrir Modal
+        onClose={handleModalSet2} //Cerrar Modal
         position={"center"} //Posicion
         size={"md"} //tamaño
       >
@@ -69,7 +69,7 @@ export default function AddReviews({ openModal, handleModalSet }) {
           {/* Contenido */}
           <div className="w-full h-full flex flex-col p-8">
             <div className="w-full flex p-4 text-center justify-center font-bold">
-              <span>¿Que te pareció nuestro hotel?</span>
+              <span>¿Que te pareció esta habitación?</span>
             </div>
             <textarea
               name="Comentarios"
@@ -93,7 +93,7 @@ export default function AddReviews({ openModal, handleModalSet }) {
               <button
                 onClick={() => {
                   setComentario("");
-                  handleModalSet();
+                  handleModalSet2();
                 }}
                 className="inline-block rounded-md bg-Moradote focus:outline-none focus:text-white border-b-4 dark:border-VerdeC border-MoradoO hover:bg-MoradoC dark:hover:bg-MoradoC focus-within:bg-MoradoO "
               >
